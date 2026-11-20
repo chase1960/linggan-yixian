@@ -40,6 +40,7 @@ export function runReview(state,{recordId,query='',domain='all'}={},now=new Date
  const related=[...new Map([...explicitRelated,...retrieved].map(r=>[r.id,r])).values()].slice(0,3);
  const skill=state.skills.find(s=>(s.domains||[]).includes(chosen.domain))||state.skills[0];
  const draft={id:uid('review'),createdAt:now,recordId:chosen.id,title:chosen.title,mode:'evidence_compiler',status:'draft',sourceIds:[chosen.id,...related.map(x=>x.id)],relatedIds:related.map(x=>x.id),skillId:skill?.id||null,
+ methodRun:!chosen.suggestedAction&&skill?.suggestion?{id:skill.id,version:skill.version,name:skill.name,suggestion:skill.suggestion,criterion:skill.evolution?.criterion||null}:null,
  observation:chosen.insight||chosen.summary,
  continuity:chosen.change||'本次材料可以补充这个主题的理解；目前不足以证明长期行为已经改变。',
  gap:chosen.questions?.[0]||'还缺一条你实际采取行动及其结果的记录。',
@@ -51,16 +52,19 @@ export function activateAction(state,reviewId,now=new Date().toISOString()){
  const review=state.reviews.find(r=>r.id===reviewId);if(!review)throw Error('找不到这份复盘。');
  const existing=state.actions.find(a=>a.reviewId===reviewId);if(existing)return existing;
  const record=state.records.find(r=>r.id===review.recordId);
- const a={id:uid('action'),reviewId,recordId:review.recordId,title:review.nextAction,domain:record?.domain||'personal',status:'active',createdAt:now,criterion:'记录一次具体行动、结果和与预期不同的地方。'};
+ const a={id:uid('action'),reviewId,recordId:review.recordId,title:review.nextAction,domain:record?.domain||'personal',status:'active',createdAt:now,criterion:review.methodRun?.criterion||'记录一次具体行动、结果和与预期不同的地方。'};
+ if(review.methodRun)a.methodRun=clone(review.methodRun);
  state.actions.unshift(a);review.status='accepted';state.events.unshift({id:uid('event'),date:now,type:'action',title:'采纳了一个小行动',recordId:review.recordId});return a;
 }
-export function recordFeedback(state,{actionId,action,outcome,learning},now=new Date().toISOString()){
+export function recordFeedback(state,{actionId,action,outcome,learning,methodVerdict},now=new Date().toISOString()){
  const a=state.actions.find(x=>x.id===actionId);if(!a)throw Error('找不到这个行动。');
  if(a.status==='completed')throw Error('这项行动已有反馈，可新增一条后续经历。');
  if(!action?.trim()||!outcome?.trim())throw Error('请写下实际做了什么，以及实际结果。');
- const f={id:uid('feedback'),actionId,recordId:a.recordId,action:action.trim().slice(0,5000),outcome:outcome.trim().slice(0,5000),learning:(learning||'').trim().slice(0,5000),date:now};state.feedback.unshift(f);a.status='completed';a.completedAt=now;
+ if(methodVerdict&&(!a.methodRun||!Object.hasOwn(METHOD_VERDICTS,methodVerdict)))throw Error('请按这次实际使用的方法记录判断。');
+ const f={id:uid('feedback'),actionId,recordId:a.recordId,action:action.trim().slice(0,5000),outcome:outcome.trim().slice(0,5000),learning:(learning||'').trim().slice(0,5000),date:now};if(methodVerdict)f.methodVerdict=methodVerdict;
+ state.feedback.unshift(f);a.status='completed';a.completedAt=now;
  const source=state.records.find(r=>r.id===a.recordId);if(a.scenarioId)f.scenarioId=a.scenarioId;
- const r={id:uid('memory'),title:'实践反馈：'+(source?.title||a.title||'一次尝试'),summary:outcome.trim().slice(0,280),original:'实际行动：'+f.action+'\n实际结果：'+f.outcome+'\n暂时的理解：'+f.learning,type:'experience',domain:a.domain,date:now.slice(0,10),createdAt:now,origin:'user-feedback',reality:'actual',provenance:'user_report',confidence:'medium',review:'pending',status:'active',related:[a.recordId].filter(Boolean),sourceRefs:[{kind:'user_feedback',label:'你提交的行动反馈',date:now}],questions:['还有哪些因素可能影响了这次结果？'],note:'一次行动结果可补充经验，尚不足以确认普遍因果关系。'};state.records.unshift(r);
+ const r={id:uid('memory'),title:'实践反馈：'+(source?.title||a.title||'一次尝试'),summary:outcome.trim().slice(0,280),original:'实际行动：'+f.action+'\n实际结果：'+f.outcome+'\n暂时的理解：'+f.learning,type:'experience',domain:a.domain,date:now.slice(0,10),createdAt:now,origin:'user-feedback',reality:'actual',provenance:'user_report',confidence:'medium',review:'pending',status:'active',related:[a.recordId].filter(Boolean),sourceRefs:[{kind:'user_feedback',label:'你提交的行动反馈',date:now}],questions:['还有哪些因素可能影响了这次结果？'],note:'一次行动结果可补充经验，尚不足以确认普遍因果关系。'};f.memoryId=r.id;state.records.unshift(r);
  state.events.unshift({id:uid('event'),date:now,type:'feedback',title:'把一次行动结果带回经验库',recordId:r.id});return f;
 }
 export function reviewRecord(state,id,decision,correction,now=new Date().toISOString()){
@@ -71,14 +75,45 @@ export function reviewRecord(state,id,decision,correction,now=new Date().toISOSt
  if(decision==='corrected'){r.versions=r.versions||[];r.versions.push({summary:r.summary,date:now,reason:'本人纠正'});r.summary=correction.trim().slice(0,5000);if(r.insight)r.insight=r.summary;delete r.suggestedAction;r.status='active';}
  state.events.unshift({id:uid('event'),date:now,type:'correction',title:decision==='corrected'?'纠正了一条理解':decision==='rejected'?'停用了一条解释':'确认了一条记录',recordId:id});return r;
 }
+export const METHOD_VERDICTS={met:'达到预期',mixed:'部分达到',missed:'未达到',unused:'没有使用这条建议'};
+export function methodFeedback(state){
+ const actions=new Map(state.actions.map(a=>[a.id,a])),skills=new Map(state.skills.map(s=>[s.id,s]));
+ const records=new Map(state.records.map(r=>[r.id,r]));
+ return state.feedback.flatMap(f=>{
+  const a=actions.get(f.actionId),run=a?.methodRun;
+  if(!run||!Object.hasOwn(METHOD_VERDICTS,f.methodVerdict))return [];
+  const skill=skills.get(run.id),record=records.get(f.memoryId);
+  const applicable=Boolean(record&&record.status!=='superseded'&&record.reality==='actual');
+  return [{feedback:f,run,skill,canRevise:applicable&&skill?.version===run.version&&['mixed','missed'].includes(f.methodVerdict)}];
+ });
+}
+export function methodComparisons(state,entries=methodFeedback(state)){
+ const byVersion=new Map();
+ for(const {run,feedback} of entries){
+  if(feedback.methodVerdict==='unused')continue;
+  const key=JSON.stringify([run.id,run.version]),counts=byVersion.get(key)||{met:0,mixed:0,missed:0};
+  counts[feedback.methodVerdict]++;byVersion.set(key,counts);
+ }
+ const counts=(id,version)=>byVersion.get(JSON.stringify([id,version]))||{met:0,mixed:0,missed:0};
+ return state.skills.filter(s=>s.evolution).map(skill=>({skill,baseline:counts(skill.id,skill.evolution.fromVersion),current:counts(skill.id,skill.version)}));
+}
 export function saveSkill(state,input,now=new Date().toISOString()){
  if(!input.name?.trim()||!input.trigger?.trim()||!input.steps?.length)throw Error('方法需要名称、适用场景和至少一个步骤。');
  const sourceIds=(input.sourceIds||[]).filter(id=>state.records.some(r=>r.id===id&&r.status!=='superseded'));
  if(!sourceIds.length)throw Error('请关联至少一条经历或知识记录作为方法来源。');
  let skill=state.skills.find(s=>s.id===input.id);
+ let evolution=null;
+ if(input.evidenceFeedbackId){
+  const item=methodFeedback(state).find(row=>row.feedback.id===input.evidenceFeedbackId);
+  if(!item?.canRevise||item.skill.id!==input.id||input.expectedVersion!==skill?.version)throw Error('方法版本已变化，或反馈不可用于修订。请回到复盘页重新核对。');
+  const rationale=input.rationale?.trim(),criterion=input.criterion?.trim(),suggestion=input.suggestion?.trim();
+  if(!rationale||!criterion||!suggestion||suggestion===skill.suggestion?.trim())throw Error('请写清改动理由、下一次检查标准，并修改下一次建议。');
+  evolution={feedbackId:item.feedback.id,fromVersion:skill.version,rationale:rationale.slice(0,1000),criterion:criterion.slice(0,1000)};
+  if(!sourceIds.includes(item.feedback.memoryId))sourceIds.push(item.feedback.memoryId);
+ }
  const fields={name:input.name.trim().slice(0,100),subtitle:(input.subtitle||'从经历中沉淀的方法').slice(0,150),trigger:input.trigger.trim().slice(0,1000),domains:input.domains.filter(id=>DOMAINS.some(d=>d.id===id)),inputs:(input.inputs||[]).slice(0,12),steps:input.steps.map(x=>x.trim()).filter(Boolean).slice(0,20),checks:(input.checks||[]).slice(0,12),suggestion:(input.suggestion||input.steps[0]).slice(0,1000),sourceIds,level:'本人沉淀 · 待独立验证',updatedAt:now};
  if(!fields.domains.length)throw Error('请选择方法的适用领域。');
- if(skill){const old={version:skill.version,name:skill.name,trigger:skill.trigger,steps:clone(skill.steps),checks:clone(skill.checks),sourceIds:clone(skill.sourceIds),date:now};skill.versions=skill.versions||[];skill.versions.push(old);Object.assign(skill,fields,{version:skill.version+1});}
+ if(skill){const old={version:skill.version,name:skill.name,trigger:skill.trigger,steps:clone(skill.steps),checks:clone(skill.checks),sourceIds:clone(skill.sourceIds),date:now,suggestion:skill.suggestion,...(skill.evolution?{evolution:clone(skill.evolution)}:{})};skill.versions=skill.versions||[];skill.versions.push(old);Object.assign(skill,fields,{version:skill.version+1});if(evolution)skill.evolution=evolution;else delete skill.evolution;}
  else{skill={id:uid('skill'),version:1,...fields};state.skills.unshift(skill);}
  state.events.unshift({id:uid('event'),date:now,type:'correction',title:'沉淀方法「'+skill.name+'」v'+skill.version,recordId:sourceIds[0]});return skill;
 }

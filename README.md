@@ -47,3 +47,8 @@ python knowledge/restore_sqlite.py
 在 knowledge/ 生成 knowledge.sqlite；archive 表按 collection、id 保存 JSON。它是便于查询的通用归档库，并非生产 D1 原表的直接镜像。JSON、Markdown 和原始附件保留可供再次迁移。
 
 本次归档不等于已抓取全部聊天历史；已整理摘要和原始全文有明确区别。未上传的电脑资料、未连接的微信和飞书全文不在此次导出中。详细范围见 [来源说明](docs/import-provenance.md)。后续云端变化尚不会自动同步到 GitHub。
+
+
+## 方法自进化
+
+见 [闭环审查与操作说明](docs/evolution-loop.md)。CHECKSUMS.json 是 2026-11-18 原始备份快照的校验清单，请以 Git 提交树验证之后的代码修订。
