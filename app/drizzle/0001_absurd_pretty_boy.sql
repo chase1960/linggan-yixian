@@ -1,0 +1,1 @@
+ALTER TABLE `capture_batches` ADD `credential_id` text;

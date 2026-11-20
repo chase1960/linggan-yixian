@@ -1,0 +1,28 @@
+{
+  "product_version": "digital-self-v2",
+  "date": "2026-11-14",
+  "private_data_imported": true,
+  "records": 50,
+  "history_topics": 40,
+  "cognition_records": 10,
+  "sources": 14,
+  "skills": 3,
+  "review_drafts": 1,
+  "user_actions": 0,
+  "original_transcripts": 0,
+  "checks": {
+    "unit_and_integration_passed": 17,
+    "public_browser_cycle": "passed",
+    "method_version_update": "passed",
+    "private_storage_read_write_read": "matched",
+    "anonymous_access": "denied",
+    "forged_identity": "denied",
+    "stale_etag_write": "denied"
+  },
+  "limits": {
+    "owner_browser_session": "requires_first_login",
+    "realtime_model_analysis": "not_connected",
+    "feishu_auto_sync": "not_connected",
+    "scheduled_personal_review": "not_enabled"
+  }
+}

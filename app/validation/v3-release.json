@@ -1,0 +1,30 @@
+{
+  "product_version": "digital-self-v3",
+  "date": "2026-11-14",
+  "checks_passed": 32,
+  "browser_checks": [
+    "simulation_excluded_from_real_observations",
+    "explicit_plan_adoption",
+    "prediction_retained_beside_feedback"
+  ],
+  "private_plan_merge": {
+    "status": "verified",
+    "records": 53,
+    "sources": 15,
+    "skills": 4,
+    "models": 1,
+    "experiments": 1,
+    "real_observations_added": 0,
+    "unconfirmed_observations_added": 1,
+    "old_collections": "preserved",
+    "private_read_write_read": "matched",
+    "anonymous_read": "denied"
+  },
+  "limits": {
+    "realtime_model": "not_connected",
+    "reinforcement_learning": "not_trained",
+    "feishu_auto_sync": "not_connected",
+    "full_transcripts": "not_retrieved",
+    "owner_browser_login": "not_verified"
+  }
+}

@@ -1,0 +1,1140 @@
+{
+  "algorithm": "sha256",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 142,
+      "sha256": "8571f47a0e92bfa5ee37c7e329bef7b623c2313144d57eb1106f672c2ae5144f"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2696,
+      "sha256": "a328eff6c57f3004e9545c206c9a9818585e285816a3ee655b6a2dfe98ddc4bc"
+    },
+    {
+      "path": "app/.gitignore",
+      "bytes": 105,
+      "sha256": "44466b35c54ce20435ca4b42119ffd32b8e8d0aa2b10811dd6839647c0ba0a14"
+    },
+    {
+      "path": "app/.openai/hosting.json",
+      "bytes": 130,
+      "sha256": "edd44f329c0d716a74df27fcff591dfc92a52d1af6521fb2a24da2c36ec9fc28"
+    },
+    {
+      "path": "app/LEARNING_WORKFLOW.md",
+      "bytes": 2447,
+      "sha256": "f0b938a5f6bf84a881cac88aabc42d8920265782a74fa9c8a025e5addcb93345"
+    },
+    {
+      "path": "app/PROGRESS.md",
+      "bytes": 5464,
+      "sha256": "bffe31a6f82e8517c7ac822c13ac5a578405b645db35eac4da9df62165e15bbf"
+    },
+    {
+      "path": "app/README.md",
+      "bytes": 6011,
+      "sha256": "29ba7ae4ca51227997ef76abce83a9a3dbc307e12d66a89007b062694261b72b"
+    },
+    {
+      "path": "app/db/schema.ts",
+      "bytes": 1682,
+      "sha256": "622b700d1034066244438553033074a36e83381aac6cdbe24b603c0604b17615"
+    },
+    {
+      "path": "app/dist/.openai/hosting.json",
+      "bytes": 129,
+      "sha256": "59c5c917e56cebe004ead39b13eda933f3f29fb234e7e5a4b1bdfa3e0215e41c"
+    },
+    {
+      "path": "app/dist/app.js",
+      "bytes": 6629,
+      "sha256": "4fbc28b5e8f1acfc23f3d8463bbc5b3f555b905323e31372b4bececa8c820e98"
+    },
+    {
+      "path": "app/dist/distill-prompt.txt",
+      "bytes": 4175,
+      "sha256": "ed9781fd3d60b31d2d8ff311bded9c0fda6c1614a96da81cc289c376e0a93d1b"
+    },
+    {
+      "path": "app/dist/downloads/01_个人认知知识库工作台.docx",
+      "bytes": 38451,
+      "sha256": "a9c82a56aa2723811b70c0bb20c1f37a33f929eb85b8c89a892cd523558f275a"
+    },
+    {
+      "path": "app/dist/downloads/02_个人认知知识库维护规则.docx",
+      "bytes": 42243,
+      "sha256": "cbcd3adb98d1c8b9a5d324e0e863d5a9c19c881c35f448728f5e3517365b0faa"
+    },
+    {
+      "path": "app/dist/downloads/03_个人认知知识库七类模板.docx",
+      "bytes": 40287,
+      "sha256": "8337156278540ed113b8d297b711b6a1bd9ec6c8b7fa8d4afa17d757e658b2ea"
+    },
+    {
+      "path": "app/dist/drizzle/0000_blushing_aaron_stack.sql",
+      "bytes": 1510,
+      "sha256": "7182617f0f2d2a708168b7c73c6ca3f3f8071a52eaf5603aeb532cad3526c1d8"
+    },
+    {
+      "path": "app/dist/drizzle/0001_absurd_pretty_boy.sql",
+      "bytes": 55,
+      "sha256": "5cbc53765fd0a505c375125bebd57b065b3347fa5ce546b943d8c2429158b15a"
+    },
+    {
+      "path": "app/dist/drizzle/meta/0000_snapshot.json",
+      "bytes": 8112,
+      "sha256": "a69c0c67fb50f456de7bd48c68af329d7e40a71869eced5ff972ff4c0e3340e2"
+    },
+    {
+      "path": "app/dist/drizzle/meta/0001_snapshot.json",
+      "bytes": 8303,
+      "sha256": "899617b102c356f00cf3c3188c97bf45098c82c42861fb720ccc868434a060ad"
+    },
+    {
+      "path": "app/dist/drizzle/meta/_journal.json",
+      "bytes": 355,
+      "sha256": "43c39b4d0fa0b5268e407ee1df76d87c728538e9e3d2a35d17dbbb85b503bf03"
+    },
+    {
+      "path": "app/dist/feishu-links.json",
+      "bytes": 385,
+      "sha256": "640b1bf0309f5ccf1a3bca894f27393b37d8ba51654ce92f9e6d1bf1b77fab9c"
+    },
+    {
+      "path": "app/dist/index.html",
+      "bytes": 8744,
+      "sha256": "3387c52229185d615df117817d1e45b0784542ebb664f0494c0c60cf2e60ea07"
+    },
+    {
+      "path": "app/dist/server/index.js",
+      "bytes": 552001,
+      "sha256": "ebb09ec65276af9f7db5c3d4cca8bca46c87d961325da7bd205626501e467d83"
+    },
+    {
+      "path": "app/dist/style.css",
+      "bytes": 11950,
+      "sha256": "0ddbe988501d4d5c0498b0248297f5a8e487e9e3a37a070a8f6543deb7c49b1c"
+    },
+    {
+      "path": "app/drizzle/0000_blushing_aaron_stack.sql",
+      "bytes": 1510,
+      "sha256": "7182617f0f2d2a708168b7c73c6ca3f3f8071a52eaf5603aeb532cad3526c1d8"
+    },
+    {
+      "path": "app/drizzle/0001_absurd_pretty_boy.sql",
+      "bytes": 55,
+      "sha256": "5cbc53765fd0a505c375125bebd57b065b3347fa5ce546b943d8c2429158b15a"
+    },
+    {
+      "path": "app/drizzle/meta/0000_snapshot.json",
+      "bytes": 8112,
+      "sha256": "a69c0c67fb50f456de7bd48c68af329d7e40a71869eced5ff972ff4c0e3340e2"
+    },
+    {
+      "path": "app/drizzle/meta/0001_snapshot.json",
+      "bytes": 8303,
+      "sha256": "899617b102c356f00cf3c3188c97bf45098c82c42861fb720ccc868434a060ad"
+    },
+    {
+      "path": "app/drizzle/meta/_journal.json",
+      "bytes": 355,
+      "sha256": "43c39b4d0fa0b5268e407ee1df76d87c728538e9e3d2a35d17dbbb85b503bf03"
+    },
+    {
+      "path": "app/drizzle.config.ts",
+      "bytes": 131,
+      "sha256": "8f0b0441ef2d967c839418715a2cbb051c0338dc156d989895c03ccbc81d4cf6"
+    },
+    {
+      "path": "app/package-lock.json",
+      "bytes": 50448,
+      "sha256": "1466fcf6e3c4cc0c985539b1a0f53f186854cd64af8426a7b14b5035b7fbc1a8"
+    },
+    {
+      "path": "app/package.json",
+      "bytes": 368,
+      "sha256": "9ae49a80875acc685f7c0a084e165f160e91521752d605403b2455a9a96bf5d7"
+    },
+    {
+      "path": "app/public/app.css",
+      "bytes": 30399,
+      "sha256": "e36594607c105c5fc6a824f49b75925fe4143b414d5f6757e9527f9dc58b96d7"
+    },
+    {
+      "path": "app/public/app.js",
+      "bytes": 49300,
+      "sha256": "2ced069d0812b233dd3c59d2f1b7670f970001a6a4e6aedcdac1b92b25454ada"
+    },
+    {
+      "path": "app/public/capture-engine.js",
+      "bytes": 8988,
+      "sha256": "dacd160b2a99977e1b5f16f14ce8bee34f02171c51dfea2cbf93e44bc97be864"
+    },
+    {
+      "path": "app/public/capture-ui.js",
+      "bytes": 24121,
+      "sha256": "5ffb800bc303748965032b725897a8fb744f1b49fd7c60a7f647fcf5e80c5b25"
+    },
+    {
+      "path": "app/public/downloads/workbuddy-contract.md",
+      "bytes": 4561,
+      "sha256": "b0322e79c586b8461ba0d89e86832962cdf818dab2ecd804692c5b5036027f40"
+    },
+    {
+      "path": "app/public/downloads/workbuddy_upload.py",
+      "bytes": 6728,
+      "sha256": "430e2285fd4f18aa6c7b37ff974dd42cd79473797ff5884b8bd514a738a01c99"
+    },
+    {
+      "path": "app/public/engine.js",
+      "bytes": 30299,
+      "sha256": "2839d93c8340938c769b648612b6652cd880edbd1c02d715ef1d0712714e29f2"
+    },
+    {
+      "path": "app/public/guide/app.js",
+      "bytes": 6629,
+      "sha256": "4fbc28b5e8f1acfc23f3d8463bbc5b3f555b905323e31372b4bececa8c820e98"
+    },
+    {
+      "path": "app/public/guide/distill-prompt.txt",
+      "bytes": 4175,
+      "sha256": "ed9781fd3d60b31d2d8ff311bded9c0fda6c1614a96da81cc289c376e0a93d1b"
+    },
+    {
+      "path": "app/public/guide/downloads/01_个人认知知识库工作台.docx",
+      "bytes": 38451,
+      "sha256": "a9c82a56aa2723811b70c0bb20c1f37a33f929eb85b8c89a892cd523558f275a"
+    },
+    {
+      "path": "app/public/guide/downloads/02_个人认知知识库维护规则.docx",
+      "bytes": 42243,
+      "sha256": "cbcd3adb98d1c8b9a5d324e0e863d5a9c19c881c35f448728f5e3517365b0faa"
+    },
+    {
+      "path": "app/public/guide/downloads/03_个人认知知识库七类模板.docx",
+      "bytes": 40287,
+      "sha256": "8337156278540ed113b8d297b711b6a1bd9ec6c8b7fa8d4afa17d757e658b2ea"
+    },
+    {
+      "path": "app/public/guide/feishu-links.json",
+      "bytes": 385,
+      "sha256": "640b1bf0309f5ccf1a3bca894f27393b37d8ba51654ce92f9e6d1bf1b77fab9c"
+    },
+    {
+      "path": "app/public/guide/index.html",
+      "bytes": 8744,
+      "sha256": "3387c52229185d615df117817d1e45b0784542ebb664f0494c0c60cf2e60ea07"
+    },
+    {
+      "path": "app/public/guide/style.css",
+      "bytes": 11950,
+      "sha256": "0ddbe988501d4d5c0498b0248297f5a8e487e9e3a37a070a8f6543deb7c49b1c"
+    },
+    {
+      "path": "app/public/index.html",
+      "bytes": 669,
+      "sha256": "513cdd866279f9d73c8432edece41879c995cea64f50e027dec9c2b397d16345"
+    },
+    {
+      "path": "app/public/lab-ui.js",
+      "bytes": 25289,
+      "sha256": "83c9fc5be9ea28a7b392d9bfeab8e650dcde125b1637deafb90c9ea7650f5421"
+    },
+    {
+      "path": "app/public/learning/index.html",
+      "bytes": 5631,
+      "sha256": "bd50ae163961556beef72061a789fbd0bfc1073ce6b8967d1b7f3ad4783e0da6"
+    },
+    {
+      "path": "app/public/learning/learning.css",
+      "bytes": 6369,
+      "sha256": "3b720440e4ca1fd096f60936a6e08b384b384886adfd1a4f1604f56a2d0d8316"
+    },
+    {
+      "path": "app/public/learning/learning.js",
+      "bytes": 5950,
+      "sha256": "e23531639c2761d487f37d8a69c68fa3b235947d5e0efca76aa66e9956b59ec7"
+    },
+    {
+      "path": "app/public/learning/records.json",
+      "bytes": 7196,
+      "sha256": "64b6f2c49c156c37fe507641008fe478247ac5cf10adc6f22ad37f63435c3d84"
+    },
+    {
+      "path": "app/scripts/build.mjs",
+      "bytes": 2417,
+      "sha256": "ad61e16f7eda59df952dd4ff4a92cc8e71600a912121375ac6b0b49e3a270821"
+    },
+    {
+      "path": "app/scripts/dev.mjs",
+      "bytes": 2339,
+      "sha256": "66d1ffcb3791677e9928de3fbbe5268fa23fdecc7a0a61bcc9f6ca641447aafa"
+    },
+    {
+      "path": "app/scripts/local-d1.mjs",
+      "bytes": 1288,
+      "sha256": "37b0978014b65c08aee2088aed8c0c21f2ea159c41419dddc394349230e94133"
+    },
+    {
+      "path": "app/tests/capture.test.mjs",
+      "bytes": 8716,
+      "sha256": "eda3d0df019f76009350f8dcab702c4fd82b7cc78ae54f8da1322e4b283a8315"
+    },
+    {
+      "path": "app/tests/empty-workspace.test.mjs",
+      "bytes": 1556,
+      "sha256": "9e7f8dfb4c29e1d7f028ff54d5ba755ddbfd4695069a6349439437fa60621b5f"
+    },
+    {
+      "path": "app/tests/engine.test.mjs",
+      "bytes": 3303,
+      "sha256": "4f8f177730fc27bacfcd49155815f26f993e18d09ea7fd3b61a136da5e2effcb"
+    },
+    {
+      "path": "app/tests/evolution.test.mjs",
+      "bytes": 1008,
+      "sha256": "072ec80bdbb34d50247488af64a9332cf0b0fafc4823d30cc10f75e299a56adf"
+    },
+    {
+      "path": "app/tests/lab.test.mjs",
+      "bytes": 7758,
+      "sha256": "38fcd5fca7f403f2fe28bbae2f4fad4cdece70ccb9fa3550c9c956b6caf2c835"
+    },
+    {
+      "path": "app/tests/learning.test.mjs",
+      "bytes": 2429,
+      "sha256": "668a3b70a44c05c7a9f4520d4e77383352094aad525bd766e8aba07d435b195b"
+    },
+    {
+      "path": "app/tests/security.test.mjs",
+      "bytes": 4392,
+      "sha256": "d5e0489f329b9acdd2269ba0ee47f0af7d1180946e47376abaaa93bff692c0cb"
+    },
+    {
+      "path": "app/validation/v2-release.json",
+      "bytes": 764,
+      "sha256": "d3a850e83ef84c7e18c23aec65438ea0db06c99a62cb5a832edce3e62d7959aa"
+    },
+    {
+      "path": "app/validation/v3-release.json",
+      "bytes": 801,
+      "sha256": "1c32ee8c5f4ad090cdf9b8c2cc54a4db0821e78ae9bc707b49dd1ed8e3d59a18"
+    },
+    {
+      "path": "app/validation/v4-release.json",
+      "bytes": 973,
+      "sha256": "1d777f19fc28cb7b4ec6b374cbc49153ee97be10126c68e32de47c7426b26b1f"
+    },
+    {
+      "path": "app/worker/capture.js",
+      "bytes": 22807,
+      "sha256": "7f2c5e80e0cf59441eb2b8d1fec56e779d1eb8ff535cf13f0d50bb8111ae5800"
+    },
+    {
+      "path": "app/worker/index.js",
+      "bytes": 10959,
+      "sha256": "6a8408f49c41f3c404d718022e89c2939c1413f1d486b3564b48b1acf0a5cb1f"
+    },
+    {
+      "path": "docs/import-provenance.md",
+      "bytes": 1243,
+      "sha256": "0d1b93deca92606de10a3180a9f0a12bdf87bb55fc0fd0ce10f0224e21379146"
+    },
+    {
+      "path": "docs/inspiration-v4-plan.md",
+      "bytes": 17050,
+      "sha256": "4ff72b458f16dc2606fd191ac4bb7838656a23aabc8a667e2eed93dcae9cc975"
+    },
+    {
+      "path": "docs/validation.md",
+      "bytes": 701,
+      "sha256": "0a61cb04254b82d7ac9ee9a450a2383684177f90b9a3a218de3bf59690c418da"
+    },
+    {
+      "path": "knowledge/README.md",
+      "bytes": 662,
+      "sha256": "04fd259e13361788078d1ea844b72e0269e5f7a155e972d8e37baad1c8b9993b"
+    },
+    {
+      "path": "knowledge/data/capture-tables.json",
+      "bytes": 43475,
+      "sha256": "7a9e093fb8d163ab060f0737296e86378b0f41505cd372cb9f2179484a96d018"
+    },
+    {
+      "path": "knowledge/data/learning.json",
+      "bytes": 19907,
+      "sha256": "8ca32deb3fabd34f2d44da564fa78c01160cb6296ef83ef375f22e40abebd943"
+    },
+    {
+      "path": "knowledge/data/workspace.json",
+      "bytes": 171370,
+      "sha256": "d66ecaf9a473c54cbf186cfb560082b94d7c4391ae61b2cc0bd77a786a53980c"
+    },
+    {
+      "path": "knowledge/index.html",
+      "bytes": 249275,
+      "sha256": "0ae54c89f47118ef913cc544646c16a8a16a45b4d6b8f8aeeabecea8c9c9fd04"
+    },
+    {
+      "path": "knowledge/manifest.json",
+      "bytes": 10970,
+      "sha256": "027df1e9679296647328681e7e0859206ea5fad566a1fb8ddf7391c8baf67b84"
+    },
+    {
+      "path": "knowledge/raw/wechat-screenshot-20261114-001/analysis.jsonl",
+      "bytes": 12359,
+      "sha256": "acc20adf454c69f1579c12c0b9e376f129f1ff4380eca7f732637bcc73b66354"
+    },
+    {
+      "path": "knowledge/raw/wechat-screenshot-20261114-001/attachments/source.png",
+      "bytes": 180256,
+      "sha256": "ee9b632e6e45b0e057557d1e99fad8a2d92957ff6a9dc332dfab176c6b13ea4f"
+    },
+    {
+      "path": "knowledge/raw/wechat-screenshot-20261114-001/manifest.json",
+      "bytes": 817,
+      "sha256": "422eb6dc5e4b919c12a2ef9bfe0b46c48c58d34b2aed205613e41af84043cba9"
+    },
+    {
+      "path": "knowledge/raw/wechat-screenshot-20261114-001/messages.jsonl",
+      "bytes": 1436,
+      "sha256": "3d75bfd6efb92d9334f60187587db23d28863b17411215c4d8ce7d9b6a063013"
+    },
+    {
+      "path": "knowledge/restore_sqlite.py",
+      "bytes": 1124,
+      "sha256": "758188dcc72dab5ac40ecb01382f86e37ec164ed2ab83d0833e298e0ea6da12d"
+    },
+    {
+      "path": "knowledge/wiki/00001.md",
+      "bytes": 1629,
+      "sha256": "d15b58320c69ad988c53119cc8416de7478f2b1dcbe76a55f7d8534b92c670db"
+    },
+    {
+      "path": "knowledge/wiki/00002.md",
+      "bytes": 1633,
+      "sha256": "7a088816a470d8e1d91962be17e4b8e0235dc5e1c52a7ee2c93814c6b696d236"
+    },
+    {
+      "path": "knowledge/wiki/00003.md",
+      "bytes": 1537,
+      "sha256": "b227a5210e060985c712e42ce24f2ffc5287a9c1251ddb723db8dd433f15312c"
+    },
+    {
+      "path": "knowledge/wiki/00004.md",
+      "bytes": 1807,
+      "sha256": "e87b130cfd16747490f39bb28a9c2da00cf9f155dbda52fd567f87ab7676cd83"
+    },
+    {
+      "path": "knowledge/wiki/00005.md",
+      "bytes": 1756,
+      "sha256": "34a8afdbc7ba038b46839835129543c9f1838dc572383bc27fd745144d489619"
+    },
+    {
+      "path": "knowledge/wiki/00006.md",
+      "bytes": 1703,
+      "sha256": "aaf7c79041d8d59219888a0725ab0283e7efe6feed2e053428151fdda5aaa36d"
+    },
+    {
+      "path": "knowledge/wiki/00007.md",
+      "bytes": 1840,
+      "sha256": "fe3038978a34f172903d294a905b600d332888ba2e68090fdd7fcccf1104da4c"
+    },
+    {
+      "path": "knowledge/wiki/00008.md",
+      "bytes": 855,
+      "sha256": "6ced11f3486b4e3806b4b9f41243f3215072a81074d5e9e9ef02e3b3eb71981f"
+    },
+    {
+      "path": "knowledge/wiki/00009.md",
+      "bytes": 1009,
+      "sha256": "b2a4747e98e48fceb3be09a880817a42c83f8b64363386369f491e73388892e2"
+    },
+    {
+      "path": "knowledge/wiki/00010.md",
+      "bytes": 960,
+      "sha256": "b14ffa82ef30bdb56a9d146bf48da6a5555ab5fd2253a55b6f17b6b0180d76e1"
+    },
+    {
+      "path": "knowledge/wiki/00011.md",
+      "bytes": 885,
+      "sha256": "109d8e2ec511dccba9a0d0a73144ebff4e5618ba81bb23c3d3c1adff8cae9075"
+    },
+    {
+      "path": "knowledge/wiki/00012.md",
+      "bytes": 1026,
+      "sha256": "ceb2517a8aab86e72bc0aaeb490cee848a878fa0aa94acb4e211b000553673dd"
+    },
+    {
+      "path": "knowledge/wiki/00013.md",
+      "bytes": 908,
+      "sha256": "5b189182548f76bc24e943d3367d759b93ccf9a9625b434be8b759e18a707a01"
+    },
+    {
+      "path": "knowledge/wiki/00014.md",
+      "bytes": 874,
+      "sha256": "9cff74e799bb2d19a25020fe923cc2fa8319596f89dbe3bb3e917e515135aa88"
+    },
+    {
+      "path": "knowledge/wiki/00015.md",
+      "bytes": 1014,
+      "sha256": "d08f472118a6262403670fcd4e99b7c0347e0db5a012adbeb8e2247ea5d4f3cd"
+    },
+    {
+      "path": "knowledge/wiki/00016.md",
+      "bytes": 892,
+      "sha256": "3b3a1339c5e7dd2ffd5a316b9c1e8b7c21ed124a0f9f51b9246833f629025553"
+    },
+    {
+      "path": "knowledge/wiki/00017.md",
+      "bytes": 897,
+      "sha256": "eccf0b6078131bc0ecf4e4d45d0b31fbd03871b83d2c4dd5cb425efe3bc39f8b"
+    },
+    {
+      "path": "knowledge/wiki/00018.md",
+      "bytes": 893,
+      "sha256": "4b9c1147026ec19e1345e7224879d980eee43f4f07bed942b4671b5344ecaafa"
+    },
+    {
+      "path": "knowledge/wiki/00019.md",
+      "bytes": 854,
+      "sha256": "19c3cc280afd3daefa7563a5dc2044e77040086ed333d190b646aa369b533b8d"
+    },
+    {
+      "path": "knowledge/wiki/00020.md",
+      "bytes": 888,
+      "sha256": "11829372d75a1b8d3e7df026c72990ea072f5c8a2655a283f8d60051dfbae900"
+    },
+    {
+      "path": "knowledge/wiki/00021.md",
+      "bytes": 864,
+      "sha256": "d17942b60f3bd89a770686b42adf50515a642901d46c423a76a686c1c2f77155"
+    },
+    {
+      "path": "knowledge/wiki/00022.md",
+      "bytes": 875,
+      "sha256": "abe6ec33958ddcec4b2bab1a400641470e0deb5107b36e4e45ac5c44011f9ad9"
+    },
+    {
+      "path": "knowledge/wiki/00023.md",
+      "bytes": 876,
+      "sha256": "37b79dba40304135e55767c2ab07ae4fbef3d61b4e23b64d6ae8d733d0661c86"
+    },
+    {
+      "path": "knowledge/wiki/00024.md",
+      "bytes": 854,
+      "sha256": "16dd1484ba015a9dde13096af574b437ac9f005329dffdfc872283255a397a65"
+    },
+    {
+      "path": "knowledge/wiki/00025.md",
+      "bytes": 851,
+      "sha256": "335dc9892241ed12d203a33b37e655c5c0eaa8fb4dd1859f6fef6202ebc6a0a9"
+    },
+    {
+      "path": "knowledge/wiki/00026.md",
+      "bytes": 870,
+      "sha256": "798f3e2e1f82db44406fa2024a44a386d1b4def845fac61c867a82d172e37e41"
+    },
+    {
+      "path": "knowledge/wiki/00027.md",
+      "bytes": 920,
+      "sha256": "eb40d45064494c4028ad64ebc2dc11b06febe2274690acc390d0e4d362e214ab"
+    },
+    {
+      "path": "knowledge/wiki/00028.md",
+      "bytes": 843,
+      "sha256": "139dcd5cba4d1f406abd3c23046a8704927e4ab4a3c488f98a26b37935a04fb4"
+    },
+    {
+      "path": "knowledge/wiki/00029.md",
+      "bytes": 1004,
+      "sha256": "c686245f20ed6dc6fe7345524325c0e8c6eb342bbe785a4387262b8d90923bb0"
+    },
+    {
+      "path": "knowledge/wiki/00030.md",
+      "bytes": 1031,
+      "sha256": "93ed2e76d35970a26b65dc52058b63e61792e8becdb62f1b3b2b04ad5c2d23b2"
+    },
+    {
+      "path": "knowledge/wiki/00031.md",
+      "bytes": 924,
+      "sha256": "48e28d55e77cc68d204c22fd711d234e923d2a6cc9778a78c578428802ffc7b2"
+    },
+    {
+      "path": "knowledge/wiki/00032.md",
+      "bytes": 838,
+      "sha256": "a901f0c8d158802b0d5e8df9fcc05578ce146ceadb5b0aa7ed6b2a502f820d2d"
+    },
+    {
+      "path": "knowledge/wiki/00033.md",
+      "bytes": 814,
+      "sha256": "b06586f726ba512b8db65f0904acfe4f0c1cacbbd8c230834f35d8392b87605b"
+    },
+    {
+      "path": "knowledge/wiki/00034.md",
+      "bytes": 871,
+      "sha256": "f3ae079a812d258a7e81049f6f9eeb5cb69652647e45e8ab93c2692576e92fa3"
+    },
+    {
+      "path": "knowledge/wiki/00035.md",
+      "bytes": 883,
+      "sha256": "29b3328a0f216e7916ff7aa92f562a67eb16955b07375160f6a1d0d799ac89e9"
+    },
+    {
+      "path": "knowledge/wiki/00036.md",
+      "bytes": 905,
+      "sha256": "15e5db0036b40addab679222a32ec05f3084107cde34d152fd8dba2201b8dd71"
+    },
+    {
+      "path": "knowledge/wiki/00037.md",
+      "bytes": 899,
+      "sha256": "fbbe80722c9c86ab108706242c2af8535c0f76ada6b7c7650eab76a42d738c7e"
+    },
+    {
+      "path": "knowledge/wiki/00038.md",
+      "bytes": 1010,
+      "sha256": "350c0e3cc73af0c0bb43e2757a1f829c5d97b220d209141845706bfaa69c8a69"
+    },
+    {
+      "path": "knowledge/wiki/00039.md",
+      "bytes": 912,
+      "sha256": "823b0b7cc215729a9358c5365522c2ee5f6901e5f8f517d88fac524a2226749e"
+    },
+    {
+      "path": "knowledge/wiki/00040.md",
+      "bytes": 963,
+      "sha256": "88b49b5c6168a6f447e02414f7d5f2fa374e018cf0c6111bad3f81c4c07309d2"
+    },
+    {
+      "path": "knowledge/wiki/00041.md",
+      "bytes": 933,
+      "sha256": "c5f4cb1452c116772ffb352ec7c60ae5c2c9402d0f29ff56c8acd6ced773a4a0"
+    },
+    {
+      "path": "knowledge/wiki/00042.md",
+      "bytes": 922,
+      "sha256": "d867ffc0b7f312b97ce82779030ff57423b104fe57dd9a6725dff6cf102aa251"
+    },
+    {
+      "path": "knowledge/wiki/00043.md",
+      "bytes": 922,
+      "sha256": "4cb02dc958d60a241069fa96e541e7d035d74e31a251201d2d683aa024319365"
+    },
+    {
+      "path": "knowledge/wiki/00044.md",
+      "bytes": 1045,
+      "sha256": "5ac768e58ed8be172792e3965b41a5fb8fade56ad35ee339ae8efbf54d6dc6fb"
+    },
+    {
+      "path": "knowledge/wiki/00045.md",
+      "bytes": 1269,
+      "sha256": "31f531ad5b96d9e1f52b92ef334c0d3b8f600c5e3b3183674c27eb8b19bd27b4"
+    },
+    {
+      "path": "knowledge/wiki/00046.md",
+      "bytes": 1049,
+      "sha256": "963e915853dc16c381b847064cc9bb26e6104ca5c16a331e35985b65b3b324c9"
+    },
+    {
+      "path": "knowledge/wiki/00047.md",
+      "bytes": 1137,
+      "sha256": "384aa5ee6cef42946c806835364c0bcaa54c4f7051c80ea371fdaceae0aa374e"
+    },
+    {
+      "path": "knowledge/wiki/00048.md",
+      "bytes": 1057,
+      "sha256": "9876676e27909bf4af103e68ffc2ceaa94b8ffee06bb12abf53b81c616703ac5"
+    },
+    {
+      "path": "knowledge/wiki/00049.md",
+      "bytes": 1041,
+      "sha256": "91cabf590dc7db1bdde4683d0120a5c9046bb65e92d1d2f7afb99e6b1c6b4d13"
+    },
+    {
+      "path": "knowledge/wiki/00050.md",
+      "bytes": 1194,
+      "sha256": "12be02d7251813b517935b278298d3aaf0ecceede01ba776fa3e8971d0790531"
+    },
+    {
+      "path": "knowledge/wiki/00051.md",
+      "bytes": 1187,
+      "sha256": "dc4a6329f5c860660141c4d8144c67d20c84e99db43542f22cc3dd6346ec0603"
+    },
+    {
+      "path": "knowledge/wiki/00052.md",
+      "bytes": 1138,
+      "sha256": "1d5efd765e18baf4b0d514953477e746be326ecb8244ea4558cdcfed2ea2df4b"
+    },
+    {
+      "path": "knowledge/wiki/00053.md",
+      "bytes": 1054,
+      "sha256": "5d5bd29be1e0ad0ffd1b13300002debe272c06bb5741c807144935659303ddfc"
+    },
+    {
+      "path": "knowledge/wiki/00054.md",
+      "bytes": 4539,
+      "sha256": "977efa786809e07af3ee69deffc74861256052d47195e6f4899fa868e75231bd"
+    },
+    {
+      "path": "knowledge/wiki/00055.md",
+      "bytes": 4927,
+      "sha256": "7b47bbe05edae54d93b0999d3cd5deacad71b147804300ead78a8039e71e3b08"
+    },
+    {
+      "path": "knowledge/wiki/00056.md",
+      "bytes": 4298,
+      "sha256": "d795fc918c035720960f8abaf463fd2e42450057f1cb36ba686c4a541f2a0319"
+    },
+    {
+      "path": "knowledge/wiki/00057.md",
+      "bytes": 4313,
+      "sha256": "7c082311e0644c7fa7703a58423f22636b6029b16d0873a31724f3d53f3feb82"
+    },
+    {
+      "path": "knowledge/wiki/00058.md",
+      "bytes": 4418,
+      "sha256": "2381b575a611ac4424658d43b10ed13b6ef913ec8c582824d25100d72af8689c"
+    },
+    {
+      "path": "knowledge/wiki/00059.md",
+      "bytes": 4506,
+      "sha256": "fe5536b4168b60dd9fb9d0a40ab8e9ae0a2d6b080ced097f4b55790ad3f998ce"
+    },
+    {
+      "path": "knowledge/wiki/00060.md",
+      "bytes": 4401,
+      "sha256": "597fd4db1dd6ab3db62315d89e8497cf8d5db2b6c39925dd7c7c2cc7e76f4c06"
+    },
+    {
+      "path": "knowledge/wiki/00061.md",
+      "bytes": 4280,
+      "sha256": "d33bacc3cb2b074c25edf2594543cc1673a296950ef26e95377420a7b6cbc12d"
+    },
+    {
+      "path": "knowledge/wiki/00062.md",
+      "bytes": 4463,
+      "sha256": "796dc3a7831ef0c756c2be9cb0c0ea74a2aea28c629a81bb5734bc8c25a1c67d"
+    },
+    {
+      "path": "legacy-vault/AGENTS.md",
+      "bytes": 8356,
+      "sha256": "351b8214e0130389420649056734aa5c48d5865c1b6998a5d4455f8b1f4e3100"
+    },
+    {
+      "path": "legacy-vault/HANDOFF.md",
+      "bytes": 6457,
+      "sha256": "dfa08ffc598690f87744393f40b93e9cffcf77bb5d7090869031b502a38d37cb"
+    },
+    {
+      "path": "legacy-vault/ONLINE.md",
+      "bytes": 2585,
+      "sha256": "d6af4e94d85e2ec8d82027b80cc7ce612c9fb1196fce357cab47baba836e1beb"
+    },
+    {
+      "path": "legacy-vault/README.md",
+      "bytes": 3592,
+      "sha256": "c248505c75a9e0533f729ea2ddf701bfbf1f056f9168e2ced8024dff8e0af950"
+    },
+    {
+      "path": "legacy-vault/SCHEMA_V1.md",
+      "bytes": 987,
+      "sha256": "e3567d9146de2ddf19b99fa0e205e117462f3ce86acab9986ea7ba18529b5c5d"
+    },
+    {
+      "path": "legacy-vault/catalog/README.md",
+      "bytes": 1380,
+      "sha256": "8042ee6a51e7204a96e92f3d9ebc688fd7bdcf81be1a33bc50e4bb327a7e70de"
+    },
+    {
+      "path": "legacy-vault/catalog/history-topics-v1.json",
+      "bytes": 17441,
+      "sha256": "ff070d51b32380da367b74a18739b08d6ed6edc6cf4ce00fbd67e940a3dc7850"
+    },
+    {
+      "path": "legacy-vault/domains/build/index.md",
+      "bytes": 8263,
+      "sha256": "ec86a69ca51555d48b4fe10b6d6ce7a643393eacac130cc1637698d24fdc49e9"
+    },
+    {
+      "path": "legacy-vault/domains/business/index.md",
+      "bytes": 6702,
+      "sha256": "36c5aee7e021674ca502f5e02bc712cb0ba36663c63282776069ecabb764fb0d"
+    },
+    {
+      "path": "legacy-vault/domains/knowledge/index.md",
+      "bytes": 5069,
+      "sha256": "09378bc1664dd24522b70fc67488b66beb379be7e4b2ba613ca9c5e7e3694237"
+    },
+    {
+      "path": "legacy-vault/domains/personal/index.md",
+      "bytes": 21913,
+      "sha256": "adde01cbc8e750af1356d82b7c729b93bfd98db2cc4153369cc902d6a88e12dd"
+    },
+    {
+      "path": "legacy-vault/index.md",
+      "bytes": 2368,
+      "sha256": "f79392212d78f573623a20a1989d6026021b027e138d17124e5306362e049b6e"
+    },
+    {
+      "path": "legacy-vault/log.md",
+      "bytes": 3514,
+      "sha256": "fe9d133a5c7ddfc3be0bd1627341f50c2b5c8c1489fbf8af8c89f1eebcce5500"
+    },
+    {
+      "path": "legacy-vault/online/01_个人认知知识库工作台.docx",
+      "bytes": 38451,
+      "sha256": "a9c82a56aa2723811b70c0bb20c1f37a33f929eb85b8c89a892cd523558f275a"
+    },
+    {
+      "path": "legacy-vault/online/02_个人认知知识库维护规则.docx",
+      "bytes": 42243,
+      "sha256": "cbcd3adb98d1c8b9a5d324e0e863d5a9c19c881c35f448728f5e3517365b0faa"
+    },
+    {
+      "path": "legacy-vault/online/03_个人认知知识库七类模板.docx",
+      "bytes": 40287,
+      "sha256": "8337156278540ed113b8d297b711b6a1bd9ec6c8b7fa8d4afa17d757e658b2ea"
+    },
+    {
+      "path": "legacy-vault/online/links.json",
+      "bytes": 1038,
+      "sha256": "fb91acc4491d76ced2d8d102cf148b1e6f5dd62118382031b4ac16eae7401b1f"
+    },
+    {
+      "path": "legacy-vault/online/review-v1/04_个人情感洞察_四段对话复盘_V1.md",
+      "bytes": 21913,
+      "sha256": "adde01cbc8e750af1356d82b7c729b93bfd98db2cc4153369cc902d6a88e12dd"
+    },
+    {
+      "path": "legacy-vault/online/review-v1/05_创业idea记录_历史主题与复用_V1.md",
+      "bytes": 6702,
+      "sha256": "36c5aee7e021674ca502f5e02bc712cb0ba36663c63282776069ecabb764fb0d"
+    },
+    {
+      "path": "legacy-vault/online/review-v1/06_其他知识点_多元讨论索引_V1.md",
+      "bytes": 5069,
+      "sha256": "09378bc1664dd24522b70fc67488b66beb379be7e4b2ba613ca9c5e7e3694237"
+    },
+    {
+      "path": "legacy-vault/online/review-v1/07_项目Demo构建_AI_native学习_V1.md",
+      "bytes": 8263,
+      "sha256": "ec86a69ca51555d48b4fe10b6d6ce7a643393eacac130cc1637698d24fdc49e9"
+    },
+    {
+      "path": "legacy-vault/online/review-v1/validation.json",
+      "bytes": 2231,
+      "sha256": "7caa94790c875c048a7dc25a051272deab7fac9bf37f068a5a936ea98923a5d8"
+    },
+    {
+      "path": "legacy-vault/online/validation.json",
+      "bytes": 415,
+      "sha256": "1adfc991718f52d409f253a297a343d4c36b0569a1fe5496b7f333c9cf324ada"
+    },
+    {
+      "path": "legacy-vault/queries/example-queries.md",
+      "bytes": 3109,
+      "sha256": "b753b0bcbce540f6cc76f8cb4fb4ddac5eaf56a76ff603d7224bf88aa478fd03"
+    },
+    {
+      "path": "legacy-vault/raw/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "legacy-vault/raw/chatgpt/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "legacy-vault/raw/claude/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "legacy-vault/raw/doubao/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "legacy-vault/raw/journal/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "legacy-vault/raw/notes/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "legacy-vault/raw/notes/retrieval-2026-11-12/C1.json",
+      "bytes": 10394,
+      "sha256": "a132847fbf4fe583fb395cc09aa12c03c4e27148349f455ba94eb182a3d475f7"
+    },
+    {
+      "path": "legacy-vault/raw/notes/retrieval-2026-11-12/C2.json",
+      "bytes": 13716,
+      "sha256": "7bfe13b26683939d16b5c29c37c9a84db5fdc60c4850514cb55e03eef4f8e2c9"
+    },
+    {
+      "path": "legacy-vault/raw/notes/retrieval-2026-11-12/E1.json",
+      "bytes": 3972,
+      "sha256": "549a48e8694f8d659d64d94ac5b47f13cbef0e44a067e16d056abf8b38068984"
+    },
+    {
+      "path": "legacy-vault/raw/notes/retrieval-2026-11-12/E2.json",
+      "bytes": 1368,
+      "sha256": "35d08195f27da012d69c59cf8d62483befecc08274e30c6f12016984ec282577"
+    },
+    {
+      "path": "legacy-vault/raw/notes/retrieval-2026-11-12/E3.json",
+      "bytes": 2852,
+      "sha256": "46b23a401268d8f9305b97deb2fa6b0f2933b217519b65e1c0c61464c4d80b76"
+    },
+    {
+      "path": "legacy-vault/raw/notes/retrieval-2026-11-12/E4.json",
+      "bytes": 4426,
+      "sha256": "f2a3b3a67b7992c84c069a5baec992e5312102b3357aa3316c7f227e31a9a478"
+    },
+    {
+      "path": "legacy-vault/raw/notes/retrieval-2026-11-12/H1.json",
+      "bytes": 8183,
+      "sha256": "6c9313f18e9066a9e870310eedc8742c3093d9808e0053ba38b3dd160285f758"
+    },
+    {
+      "path": "legacy-vault/raw/notes/retrieval-2026-11-12/H2.json",
+      "bytes": 6491,
+      "sha256": "c72338e9790351e594faf46bc26b3b5192593edb439aaa007a87b2bf1eaf668c"
+    },
+    {
+      "path": "legacy-vault/raw/notes/retrieval-2026-11-12/H3.json",
+      "bytes": 4325,
+      "sha256": "094abfcc9616bdf208a899597e11abc52962b5ed34c831637a1ad8a0478554c9"
+    },
+    {
+      "path": "legacy-vault/raw/notes/retrieval-2026-11-12/H4.json",
+      "bytes": 4896,
+      "sha256": "38c12dcaac8bb7e54d285337320bc30b720288665d0d2b7e5a81bf26f07940f0"
+    },
+    {
+      "path": "legacy-vault/scripts/__pycache__/parse_chatgpt_export.cpython-312.pyc",
+      "bytes": 16970,
+      "sha256": "18a1f0b5e22576482a6ecf5044d5b8e4aead9657f07ed6524f9b24c09c4aa952"
+    },
+    {
+      "path": "legacy-vault/scripts/build_online_documents.py",
+      "bytes": 10496,
+      "sha256": "e43e9ecf7422cf0188e2c770372669419aa124f3aab745ba9f580e378fdc594f"
+    },
+    {
+      "path": "legacy-vault/scripts/distill_prompt.md",
+      "bytes": 4175,
+      "sha256": "ed9781fd3d60b31d2d8ff311bded9c0fda6c1614a96da81cc289c376e0a93d1b"
+    },
+    {
+      "path": "legacy-vault/scripts/parse_chatgpt_export.py",
+      "bytes": 11898,
+      "sha256": "0315e307434dcf9b59c473b8e6a5cc33d7dd74ea8f28c0667529f58846711b95"
+    },
+    {
+      "path": "legacy-vault/timeline.md",
+      "bytes": 1946,
+      "sha256": "0b7c1185e19d61284c2c6f444dab88cf4edc34189ef33c7ce3f105f48a75f395"
+    },
+    {
+      "path": "legacy-vault/wiki/entities/_template.md",
+      "bytes": 673,
+      "sha256": "01d8f827a5a02be80aedcf6b236f586b8790ef1842c6230c9a7f4da7da6eba12"
+    },
+    {
+      "path": "legacy-vault/wiki/experiments/_template.md",
+      "bytes": 802,
+      "sha256": "8db089dc3a304734d3c6e338ff00cb2d95dca524ab24128d0c8aca54ab316c52"
+    },
+    {
+      "path": "legacy-vault/wiki/experiments/一次真实互动的事实解释需要回应.md",
+      "bytes": 804,
+      "sha256": "11d53629b2639ecd5f4eb9bde40e5347039c0c8b634676a7c182c8c175e49969"
+    },
+    {
+      "path": "legacy-vault/wiki/insights/_template.md",
+      "bytes": 826,
+      "sha256": "a9726070b8911a0f195cbaf7018c9e11de1a0f7fdffa5cdebe9ec2d70ab740d6"
+    },
+    {
+      "path": "legacy-vault/wiki/insights/人性灰色地带分析复盘.md",
+      "bytes": 4604,
+      "sha256": "5e81d17d40a3d8af6abf47a6d34c874b471c1b7bab6c18d531764b073b228cbf"
+    },
+    {
+      "path": "legacy-vault/wiki/insights/旅行保留当下与回看两份感受.md",
+      "bytes": 758,
+      "sha256": "a3ee340fa86fbcdba16ddcd84310ba6435414252bf20bf6c0f354600df70108a"
+    },
+    {
+      "path": "legacy-vault/wiki/insights/旅行滞后感受复盘.md",
+      "bytes": 4403,
+      "sha256": "39cedc2965713170ac49ddea71b32d42d35ee102bf96383b21e294ca145ffcd7"
+    },
+    {
+      "path": "legacy-vault/wiki/insights/查询感情分析复盘.md",
+      "bytes": 4729,
+      "sha256": "1ce2b870c78c436dc002bc17ba6768d6211dd97a6daa27ed8cbe09bc92600eaa"
+    },
+    {
+      "path": "legacy-vault/wiki/insights/认识自己与人性复盘.md",
+      "bytes": 4802,
+      "sha256": "93535daa5e0bf18363206dd478bc0e86c4bb5506ea2513b9e2ee8b5f868239aa"
+    },
+    {
+      "path": "legacy-vault/wiki/patterns/_template.md",
+      "bytes": 1184,
+      "sha256": "cbc9acb6bf678290e7ec6320ea42b574619c6fc79666321b8614d09e4e565225"
+    },
+    {
+      "path": "legacy-vault/wiki/patterns/能辨认外部参照但压力仍反复.md",
+      "bytes": 871,
+      "sha256": "b6af1ced597bbc17905fac4b7b2b215857ad84233c3aab807d79cdb9668e58f2"
+    },
+    {
+      "path": "legacy-vault/wiki/questions/_template.md",
+      "bytes": 828,
+      "sha256": "2b936adf59ab377e6fc1cd394a4e6b0566a8f75528f58abd604c087dcc44ab84"
+    },
+    {
+      "path": "legacy-vault/wiki/questions/如何让理解进入实际行为.md",
+      "bytes": 746,
+      "sha256": "fe33f0768862086defa495be6fd4318c4bfe43c3cf6c91771d7b6c54e49fe170"
+    },
+    {
+      "path": "legacy-vault/wiki/transitions/_template.md",
+      "bytes": 1071,
+      "sha256": "a50d016252b5497685e8788771863b8320d664fe76ed6df6256f083db2a36b75"
+    },
+    {
+      "path": "legacy-vault/wiki/transitions/自由路径从前置成功到开始质疑.md",
+      "bytes": 801,
+      "sha256": "1d4b30666942c4927b3329508fb08103a4295bd89f017a4a61afa86bf70999b9"
+    },
+    {
+      "path": "legacy-vault/wiki/values/_template.md",
+      "bytes": 937,
+      "sha256": "d74c84b3c6dfda2f1605c8d425647461b54263a3cbbd1907baaf8d26df4d5488"
+    },
+    {
+      "path": "legacy-vault/wiki/values/自主体验与意义事业.md",
+      "bytes": 700,
+      "sha256": "9c37f2c86cc293dd481c4bf02adb8c01087c27593a7a636e5d451ec28ee5ab17"
+    },
+    {
+      "path": "original-vault/AGENTS.md",
+      "bytes": 8356,
+      "sha256": "351b8214e0130389420649056734aa5c48d5865c1b6998a5d4455f8b1f4e3100"
+    },
+    {
+      "path": "original-vault/HANDOFF.md",
+      "bytes": 6457,
+      "sha256": "dfa08ffc598690f87744393f40b93e9cffcf77bb5d7090869031b502a38d37cb"
+    },
+    {
+      "path": "original-vault/README.md",
+      "bytes": 3592,
+      "sha256": "c248505c75a9e0533f729ea2ddf701bfbf1f056f9168e2ced8024dff8e0af950"
+    },
+    {
+      "path": "original-vault/index.md",
+      "bytes": 2487,
+      "sha256": "c43dac831ab048d751bfdc6a9078daac293c24c598e613a2d4465324d9287bb7"
+    },
+    {
+      "path": "original-vault/log.md",
+      "bytes": 901,
+      "sha256": "56b24cd0a9e3e274314e6693ece5586951c7495bafbf0d2e4b02672e24babb30"
+    },
+    {
+      "path": "original-vault/queries/example-queries.md",
+      "bytes": 3109,
+      "sha256": "b753b0bcbce540f6cc76f8cb4fb4ddac5eaf56a76ff603d7224bf88aa478fd03"
+    },
+    {
+      "path": "original-vault/raw/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "original-vault/raw/chatgpt/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "original-vault/raw/claude/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "original-vault/raw/doubao/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "original-vault/raw/journal/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "original-vault/raw/notes/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "original-vault/scripts/distill_prompt.md",
+      "bytes": 4175,
+      "sha256": "ed9781fd3d60b31d2d8ff311bded9c0fda6c1614a96da81cc289c376e0a93d1b"
+    },
+    {
+      "path": "original-vault/scripts/parse_chatgpt_export.py",
+      "bytes": 9895,
+      "sha256": "5d0744f4529f26267baa42915ad028ed170d6c15c17d60016f98006df117b7d5"
+    },
+    {
+      "path": "original-vault/timeline.md",
+      "bytes": 1309,
+      "sha256": "69ed239880af02aa276672c9889453d57f42dd9c24b938707531e96e63b123ab"
+    },
+    {
+      "path": "original-vault/wiki/entities/_template.md",
+      "bytes": 673,
+      "sha256": "01d8f827a5a02be80aedcf6b236f586b8790ef1842c6230c9a7f4da7da6eba12"
+    },
+    {
+      "path": "original-vault/wiki/experiments/_template.md",
+      "bytes": 802,
+      "sha256": "8db089dc3a304734d3c6e338ff00cb2d95dca524ab24128d0c8aca54ab316c52"
+    },
+    {
+      "path": "original-vault/wiki/insights/_template.md",
+      "bytes": 826,
+      "sha256": "a9726070b8911a0f195cbaf7018c9e11de1a0f7fdffa5cdebe9ec2d70ab740d6"
+    },
+    {
+      "path": "original-vault/wiki/patterns/_template.md",
+      "bytes": 1184,
+      "sha256": "cbc9acb6bf678290e7ec6320ea42b574619c6fc79666321b8614d09e4e565225"
+    },
+    {
+      "path": "original-vault/wiki/questions/_template.md",
+      "bytes": 828,
+      "sha256": "2b936adf59ab377e6fc1cd394a4e6b0566a8f75528f58abd604c087dcc44ab84"
+    },
+    {
+      "path": "original-vault/wiki/transitions/_template.md",
+      "bytes": 1071,
+      "sha256": "a50d016252b5497685e8788771863b8320d664fe76ed6df6256f083db2a36b75"
+    },
+    {
+      "path": "original-vault/wiki/values/_template.md",
+      "bytes": 937,
+      "sha256": "d74c84b3c6dfda2f1605c8d425647461b54263a3cbbd1907baaf8d26df4d5488"
+    }
+  ]
+}

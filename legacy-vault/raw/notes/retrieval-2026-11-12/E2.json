@@ -1,0 +1,16 @@
+{
+  "snapshot_id": "E2",
+  "captured_on": "2026-11-12",
+  "source_kind": "personal_context_retrieval",
+  "coverage": "excerpts_and_summaries_not_original_transcript",
+  "original_conversation_ids_available": false,
+  "payload": {
+    "messages": [
+      {
+        "author_role": "tool",
+        "content": "[convo search]\n- [USER_FACT] [c0] U@2026-06-30T12:30:51Z, -135d: 用户原话： “感受都是有滞后性的，在当时的场景中你感觉也不过如此，但是当你后来看照片或者回忆的时候，就能发现很多美好。”\n- [USER_FACT] [c0] U@2026-06-30T12:38:59Z, -135d: 与母亲旅行：母亲评价“感觉还不错”；用户因区别对待、种族歧视“彻底祛魅觉得国外也不过如此”，路途颠簸长远导致“没有能够很好的享受”；用户猜母亲“已经足够的豁达”，自己“还是比较敏感”。\n- [USER_FACT] [c0] U@2026-06-30T12:59:07Z, -135d: 英国旅行原话及顺序：19岁“很喜欢逛教堂和博物馆”，在教堂“坐着听唱诗班感觉很神圣”，喜欢看画和艺术品；22岁再去“去教堂也没有那么多兴趣了”，对西方文化和艺术品“没有那么多的兴趣”，并猜测与遭遇、看过太多寺院和研究佛像有关。助手\n\n[files]\n[INSUFFICIENT] No relevant file context found."
+      }
+    ],
+    "error": null
+  }
+}

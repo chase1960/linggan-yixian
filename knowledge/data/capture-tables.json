@@ -1,0 +1,171 @@
+{
+  "capture_batches": [
+    {
+      "id": "wechat-screenshot-20261114-001",
+      "hash": "472cc7da7636e10f1698ee0e4edc29a3012f07e1dde964e19b5cc066d423b9b4",
+      "created_at": "2026-11-14T09:57:49.768Z",
+      "captured_at": "2026-11-14T09:57:42.276248+00:00",
+      "count": 5,
+      "producer": "user-screenshot",
+      "raw_key": "capture/batches/wechat-screenshot-20261114-001/472cc7da7636e10f1698ee0e4edc29a3012f07e1dde964e19b5cc066d423b9b4.json",
+      "receipt": "{\"batch_id\":\"wechat-screenshot-20261114-001\",\"status\":\"committed\",\"received_at\":\"2026-11-14T09:57:49.768Z\",\"captured_at\":\"2026-11-14T09:57:42.276248+00:00\",\"messages\":5,\"items\":9,\"existing_items\":0,\"sha256\":\"472cc7da7636e10f1698ee0e4edc29a3012f07e1dde964e19b5cc066d423b9b4\"}"
+    }
+  ],
+  "capture_messages": [
+    {
+      "id": "wx-note-20261114-01",
+      "hash": "96addf3b08c68167b89552db8a33e0a6c34be6e14b91a18ca9c0d5592ec166dc",
+      "body": "{\"id\":\"wx-note-20261114-01\",\"text\":\"问题：有时候我无法判断ai到底是否是对的，应该怎么办处理\",\"authorship\":\"unknown\",\"source_timestamp\":null,\"source_kind\":\"user_supplied_screenshot\",\"attachments\":[\"attachments/source.png\"]}",
+      "batch_id": "wechat-screenshot-20261114-001",
+      "created_at": "2026-11-14T09:57:49.768Z"
+    },
+    {
+      "id": "wx-note-20261114-02",
+      "hash": "9146b05ed4cddd3ece2b702be3e2a376657d9e5559dc84c0e76e00ca11e0cf76",
+      "body": "{\"id\":\"wx-note-20261114-02\",\"text\":\"对你而言，AI 很适合承担“记住—关联—提出问题—准备选项—追踪结果”的工作。你需要保留的是：定义目标、接触真实的人与场景、做出取舍，以及判断自己是否愿意继续。\",\"authorship\":\"ai_quote\",\"source_timestamp\":null,\"source_kind\":\"user_supplied_screenshot\",\"attachments\":[\"attachments/source.png\"]}",
+      "batch_id": "wechat-screenshot-20261114-001",
+      "created_at": "2026-11-14T09:57:49.768Z"
+    },
+    {
+      "id": "wx-note-20261114-03",
+      "hash": "59d57ee10879389f78b44f3e733220e1356fc47379b2d18d1947db65efbcfbff",
+      "body": "{\"id\":\"wx-note-20261114-03\",\"text\":\"to do list:\\n地瓜比赛投递，个人简历修改，行业方向选择思考\",\"authorship\":\"unknown\",\"source_timestamp\":null,\"source_kind\":\"user_supplied_screenshot\",\"attachments\":[\"attachments/source.png\"]}",
+      "batch_id": "wechat-screenshot-20261114-001",
+      "created_at": "2026-11-14T09:57:49.768Z"
+    },
+    {
+      "id": "wx-note-20261114-04",
+      "hash": "61ef369e9226fe303711bd5e918d6d41a9a9979984d0c5554cc5a77ff7b7d796",
+      "body": "{\"id\":\"wx-note-20261114-04\",\"text\":\"明确界限：什么完全可以交给ai，什么时候需要我接入\",\"authorship\":\"unknown\",\"source_timestamp\":null,\"source_kind\":\"user_supplied_screenshot\",\"attachments\":[\"attachments/source.png\"]}",
+      "batch_id": "wechat-screenshot-20261114-001",
+      "created_at": "2026-11-14T09:57:49.768Z"
+    },
+    {
+      "id": "wx-note-20261114-05",
+      "hash": "4a7f785172694d99c9db73bb46c7b9a2b4934a0c88b738f4004ebba8794727ac",
+      "body": "{\"id\":\"wx-note-20261114-05\",\"text\":\"1.学习卡神个人agent\\n2.面试agent\\n3.知识库新增：随手记模块\",\"authorship\":\"unknown\",\"source_timestamp\":null,\"source_kind\":\"user_supplied_screenshot\",\"attachments\":[\"attachments/source.png\"]}",
+      "batch_id": "wechat-screenshot-20261114-001",
+      "created_at": "2026-11-14T09:57:49.768Z"
+    }
+  ],
+  "capture_items": [
+    {
+      "id": "wx-item-20261114-01",
+      "message_ids": "[\"wx-note-20261114-01\"]",
+      "kind": "question",
+      "domain": "knowledge",
+      "title": "怎样判断 AI 的回答是否可靠",
+      "body": "{\"id\":\"wx-item-20261114-01\",\"source_ids\":[\"wx-note-20261114-01\"],\"kind\":\"question\",\"domain\":\"knowledge\",\"title\":\"怎样判断 AI 的回答是否可靠\",\"due_at\":null,\"next_action\":\"选一个具体回答，分开标出事实、解释、建议与价值判断。\",\"acceptance_criteria\":\"形成一份有来源、替代解释与未知项的判断记录。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"问题：有时候我无法判断ai到底是否是对的，应该怎么办处理\",\"goal\":\"形成一份有来源、替代解释与未知项的判断记录。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"选一个具体回答，分开标出事实、解释、建议与价值判断。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"original_analysis\":{\"id\":\"wx-item-20261114-01\",\"source_ids\":[\"wx-note-20261114-01\"],\"kind\":\"question\",\"domain\":\"knowledge\",\"title\":\"怎样判断 AI 的回答是否可靠\",\"due_at\":null,\"next_action\":\"选一个具体回答，分开标出事实、解释、建议与价值判断。\",\"acceptance_criteria\":\"形成一份有来源、替代解释与未知项的判断记录。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"问题：有时候我无法判断ai到底是否是对的，应该怎么办处理\",\"goal\":\"形成一份有来源、替代解释与未知项的判断记录。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"选一个具体回答，分开标出事实、解释、建议与价值判断。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"}},\"batch_id\":\"wechat-screenshot-20261114-001\",\"authorship\":\"unknown\",\"adoption_status\":\"pending\",\"evidence_status\":\"unverified\",\"reality\":\"unknown\",\"schedule_confirmed\":false,\"principles\":{\"phenomenon\":\"问题：有时候我无法判断ai到底是否是对的，应该怎么办处理\",\"goal\":\"形成一份有来源、替代解释与未知项的判断记录。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"选一个具体回答，分开标出事实、解释、建议与价值判断。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"related_ids\":[],\"status\":\"inbox\",\"planned_at\":null}",
+      "status": "inbox",
+      "due_at": null,
+      "revision": 1,
+      "created_at": "2026-11-14T09:57:49.768Z",
+      "updated_at": "2026-11-14T09:57:49.768Z"
+    },
+    {
+      "id": "wx-item-20261114-02",
+      "message_ids": "[\"wx-note-20261114-02\"]",
+      "kind": "idea",
+      "domain": "personal",
+      "title": "人机协作：AI整理与追踪，本人保留目标与取舍",
+      "body": "{\"id\":\"wx-item-20261114-02\",\"source_ids\":[\"wx-note-20261114-02\"],\"kind\":\"idea\",\"domain\":\"personal\",\"title\":\"人机协作：AI整理与追踪，本人保留目标与取舍\",\"due_at\":null,\"next_action\":\"回看这条AI建议，决定哪些适合当前生活与工作。\",\"acceptance_criteria\":\"写出适用场景与本人不愿委托的决策。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"对你而言，AI 很适合承担“记住—关联—提出问题—准备选项—追踪结果”的工作。你需要保留的是：定义目标、接触真实的人与场景、做出取舍，以及判断自己是否愿意继续。\",\"goal\":\"写出适用场景与本人不愿委托的决策。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"回看这条AI建议，决定哪些适合当前生活与工作。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"original_analysis\":{\"id\":\"wx-item-20261114-02\",\"source_ids\":[\"wx-note-20261114-02\"],\"kind\":\"idea\",\"domain\":\"personal\",\"title\":\"人机协作：AI整理与追踪，本人保留目标与取舍\",\"due_at\":null,\"next_action\":\"回看这条AI建议，决定哪些适合当前生活与工作。\",\"acceptance_criteria\":\"写出适用场景与本人不愿委托的决策。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"对你而言，AI 很适合承担“记住—关联—提出问题—准备选项—追踪结果”的工作。你需要保留的是：定义目标、接触真实的人与场景、做出取舍，以及判断自己是否愿意继续。\",\"goal\":\"写出适用场景与本人不愿委托的决策。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"回看这条AI建议，决定哪些适合当前生活与工作。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"}},\"batch_id\":\"wechat-screenshot-20261114-001\",\"authorship\":\"ai_quote\",\"adoption_status\":\"pending\",\"evidence_status\":\"unverified\",\"reality\":\"unknown\",\"schedule_confirmed\":false,\"principles\":{\"phenomenon\":\"对你而言，AI 很适合承担“记住—关联—提出问题—准备选项—追踪结果”的工作。你需要保留的是：定义目标、接触真实的人与场景、做出取舍，以及判断自己是否愿意继续。\",\"goal\":\"写出适用场景与本人不愿委托的决策。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"回看这条AI建议，决定哪些适合当前生活与工作。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"related_ids\":[],\"status\":\"inbox\",\"planned_at\":null}",
+      "status": "inbox",
+      "due_at": null,
+      "revision": 1,
+      "created_at": "2026-11-14T09:57:49.768Z",
+      "updated_at": "2026-11-14T09:57:49.768Z"
+    },
+    {
+      "id": "wx-item-20261114-03",
+      "message_ids": "[\"wx-note-20261114-03\"]",
+      "kind": "task",
+      "domain": "build",
+      "title": "地瓜比赛投递",
+      "body": "{\"id\":\"wx-item-20261114-03\",\"source_ids\":[\"wx-note-20261114-03\"],\"kind\":\"task\",\"domain\":\"build\",\"title\":\"地瓜比赛投递\",\"due_at\":null,\"next_action\":\"核实具体赛事、截止时间、资格和材料清单。\",\"acceptance_criteria\":\"取得可核验的提交要求，再决定投递。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"to do list:\\n地瓜比赛投递，个人简历修改，行业方向选择思考\",\"goal\":\"取得可核验的提交要求，再决定投递。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"核实具体赛事、截止时间、资格和材料清单。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"original_analysis\":{\"id\":\"wx-item-20261114-03\",\"source_ids\":[\"wx-note-20261114-03\"],\"kind\":\"task\",\"domain\":\"build\",\"title\":\"地瓜比赛投递\",\"due_at\":null,\"next_action\":\"核实具体赛事、截止时间、资格和材料清单。\",\"acceptance_criteria\":\"取得可核验的提交要求，再决定投递。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"to do list:\\n地瓜比赛投递，个人简历修改，行业方向选择思考\",\"goal\":\"取得可核验的提交要求，再决定投递。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"核实具体赛事、截止时间、资格和材料清单。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"}},\"batch_id\":\"wechat-screenshot-20261114-001\",\"authorship\":\"unknown\",\"adoption_status\":\"pending\",\"evidence_status\":\"unverified\",\"reality\":\"unknown\",\"schedule_confirmed\":false,\"principles\":{\"phenomenon\":\"to do list:\\n地瓜比赛投递，个人简历修改，行业方向选择思考\",\"goal\":\"取得可核验的提交要求，再决定投递。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"核实具体赛事、截止时间、资格和材料清单。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"related_ids\":[],\"status\":\"inbox\",\"planned_at\":null}",
+      "status": "inbox",
+      "due_at": null,
+      "revision": 1,
+      "created_at": "2026-11-14T09:57:49.768Z",
+      "updated_at": "2026-11-14T09:57:49.768Z"
+    },
+    {
+      "id": "wx-item-20261114-04",
+      "message_ids": "[\"wx-note-20261114-03\"]",
+      "kind": "task",
+      "domain": "build",
+      "title": "个人简历修改",
+      "body": "{\"id\":\"wx-item-20261114-04\",\"source_ids\":[\"wx-note-20261114-03\"],\"kind\":\"task\",\"domain\":\"build\",\"title\":\"个人简历修改\",\"due_at\":null,\"next_action\":\"明确目标岗位，选一份简历整理需要修改的项目。\",\"acceptance_criteria\":\"形成可审阅版本；不自动外发投递。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"to do list:\\n地瓜比赛投递，个人简历修改，行业方向选择思考\",\"goal\":\"形成可审阅版本；不自动外发投递。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"明确目标岗位，选一份简历整理需要修改的项目。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"original_analysis\":{\"id\":\"wx-item-20261114-04\",\"source_ids\":[\"wx-note-20261114-03\"],\"kind\":\"task\",\"domain\":\"build\",\"title\":\"个人简历修改\",\"due_at\":null,\"next_action\":\"明确目标岗位，选一份简历整理需要修改的项目。\",\"acceptance_criteria\":\"形成可审阅版本；不自动外发投递。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"to do list:\\n地瓜比赛投递，个人简历修改，行业方向选择思考\",\"goal\":\"形成可审阅版本；不自动外发投递。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"明确目标岗位，选一份简历整理需要修改的项目。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"}},\"batch_id\":\"wechat-screenshot-20261114-001\",\"authorship\":\"unknown\",\"adoption_status\":\"pending\",\"evidence_status\":\"unverified\",\"reality\":\"unknown\",\"schedule_confirmed\":false,\"principles\":{\"phenomenon\":\"to do list:\\n地瓜比赛投递，个人简历修改，行业方向选择思考\",\"goal\":\"形成可审阅版本；不自动外发投递。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"明确目标岗位，选一份简历整理需要修改的项目。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"related_ids\":[],\"status\":\"inbox\",\"planned_at\":null}",
+      "status": "inbox",
+      "due_at": null,
+      "revision": 1,
+      "created_at": "2026-11-14T09:57:49.768Z",
+      "updated_at": "2026-11-14T09:57:49.768Z"
+    },
+    {
+      "id": "wx-item-20261114-05",
+      "message_ids": "[\"wx-note-20261114-03\"]",
+      "kind": "project",
+      "domain": "business",
+      "title": "行业方向选择思考",
+      "body": "{\"id\":\"wx-item-20261114-05\",\"source_ids\":[\"wx-note-20261114-03\"],\"kind\":\"project\",\"domain\":\"business\",\"title\":\"行业方向选择思考\",\"due_at\":null,\"next_action\":\"列出候选方向、现实约束和比较标准，找最缺的一条证据。\",\"acceptance_criteria\":\"得到一份含未知和验证行动的比较表。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"to do list:\\n地瓜比赛投递，个人简历修改，行业方向选择思考\",\"goal\":\"得到一份含未知和验证行动的比较表。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"列出候选方向、现实约束和比较标准，找最缺的一条证据。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"original_analysis\":{\"id\":\"wx-item-20261114-05\",\"source_ids\":[\"wx-note-20261114-03\"],\"kind\":\"project\",\"domain\":\"business\",\"title\":\"行业方向选择思考\",\"due_at\":null,\"next_action\":\"列出候选方向、现实约束和比较标准，找最缺的一条证据。\",\"acceptance_criteria\":\"得到一份含未知和验证行动的比较表。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"to do list:\\n地瓜比赛投递，个人简历修改，行业方向选择思考\",\"goal\":\"得到一份含未知和验证行动的比较表。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"列出候选方向、现实约束和比较标准，找最缺的一条证据。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"}},\"batch_id\":\"wechat-screenshot-20261114-001\",\"authorship\":\"unknown\",\"adoption_status\":\"pending\",\"evidence_status\":\"unverified\",\"reality\":\"unknown\",\"schedule_confirmed\":false,\"principles\":{\"phenomenon\":\"to do list:\\n地瓜比赛投递，个人简历修改，行业方向选择思考\",\"goal\":\"得到一份含未知和验证行动的比较表。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"列出候选方向、现实约束和比较标准，找最缺的一条证据。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"related_ids\":[],\"status\":\"inbox\",\"planned_at\":null}",
+      "status": "inbox",
+      "due_at": null,
+      "revision": 1,
+      "created_at": "2026-11-14T09:57:49.768Z",
+      "updated_at": "2026-11-14T09:57:49.768Z"
+    },
+    {
+      "id": "wx-item-20261114-06",
+      "message_ids": "[\"wx-note-20261114-04\"]",
+      "kind": "question",
+      "domain": "knowledge",
+      "title": "明确 AI 授权与本人介入的界限",
+      "body": "{\"id\":\"wx-item-20261114-06\",\"source_ids\":[\"wx-note-20261114-04\"],\"kind\":\"question\",\"domain\":\"knowledge\",\"title\":\"明确 AI 授权与本人介入的界限\",\"due_at\":null,\"next_action\":\"按错误代价、可撤回性和可检验性，列出常见任务的协作方式。\",\"acceptance_criteria\":\"形成任务、授权范围、检查点与介入条件。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"明确界限：什么完全可以交给ai，什么时候需要我接入\",\"goal\":\"形成任务、授权范围、检查点与介入条件。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"按错误代价、可撤回性和可检验性，列出常见任务的协作方式。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"original_analysis\":{\"id\":\"wx-item-20261114-06\",\"source_ids\":[\"wx-note-20261114-04\"],\"kind\":\"question\",\"domain\":\"knowledge\",\"title\":\"明确 AI 授权与本人介入的界限\",\"due_at\":null,\"next_action\":\"按错误代价、可撤回性和可检验性，列出常见任务的协作方式。\",\"acceptance_criteria\":\"形成任务、授权范围、检查点与介入条件。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"明确界限：什么完全可以交给ai，什么时候需要我接入\",\"goal\":\"形成任务、授权范围、检查点与介入条件。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"按错误代价、可撤回性和可检验性，列出常见任务的协作方式。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"}},\"batch_id\":\"wechat-screenshot-20261114-001\",\"authorship\":\"unknown\",\"adoption_status\":\"pending\",\"evidence_status\":\"unverified\",\"reality\":\"unknown\",\"schedule_confirmed\":false,\"principles\":{\"phenomenon\":\"明确界限：什么完全可以交给ai，什么时候需要我接入\",\"goal\":\"形成任务、授权范围、检查点与介入条件。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"按错误代价、可撤回性和可检验性，列出常见任务的协作方式。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"related_ids\":[],\"status\":\"inbox\",\"planned_at\":null}",
+      "status": "inbox",
+      "due_at": null,
+      "revision": 1,
+      "created_at": "2026-11-14T09:57:49.768Z",
+      "updated_at": "2026-11-14T09:57:49.768Z"
+    },
+    {
+      "id": "wx-item-20261114-07",
+      "message_ids": "[\"wx-note-20261114-05\"]",
+      "kind": "learning",
+      "domain": "knowledge",
+      "title": "学习卡神个人 agent",
+      "body": "{\"id\":\"wx-item-20261114-07\",\"source_ids\":[\"wx-note-20261114-05\"],\"kind\":\"learning\",\"domain\":\"knowledge\",\"title\":\"学习卡神个人 agent\",\"due_at\":null,\"next_action\":\"补充具体作者或材料链接，保留原词“卡神”。\",\"acceptance_criteria\":\"确定学习对象和准备解决的问题；不擅自改名。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"1.学习卡神个人agent\\n2.面试agent\\n3.知识库新增：随手记模块\",\"goal\":\"确定学习对象和准备解决的问题；不擅自改名。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"补充具体作者或材料链接，保留原词“卡神”。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"original_analysis\":{\"id\":\"wx-item-20261114-07\",\"source_ids\":[\"wx-note-20261114-05\"],\"kind\":\"learning\",\"domain\":\"knowledge\",\"title\":\"学习卡神个人 agent\",\"due_at\":null,\"next_action\":\"补充具体作者或材料链接，保留原词“卡神”。\",\"acceptance_criteria\":\"确定学习对象和准备解决的问题；不擅自改名。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"1.学习卡神个人agent\\n2.面试agent\\n3.知识库新增：随手记模块\",\"goal\":\"确定学习对象和准备解决的问题；不擅自改名。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"补充具体作者或材料链接，保留原词“卡神”。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"}},\"batch_id\":\"wechat-screenshot-20261114-001\",\"authorship\":\"unknown\",\"adoption_status\":\"pending\",\"evidence_status\":\"unverified\",\"reality\":\"unknown\",\"schedule_confirmed\":false,\"principles\":{\"phenomenon\":\"1.学习卡神个人agent\\n2.面试agent\\n3.知识库新增：随手记模块\",\"goal\":\"确定学习对象和准备解决的问题；不擅自改名。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"补充具体作者或材料链接，保留原词“卡神”。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"related_ids\":[],\"status\":\"inbox\",\"planned_at\":null}",
+      "status": "inbox",
+      "due_at": null,
+      "revision": 1,
+      "created_at": "2026-11-14T09:57:49.768Z",
+      "updated_at": "2026-11-14T09:57:49.768Z"
+    },
+    {
+      "id": "wx-item-20261114-08",
+      "message_ids": "[\"wx-note-20261114-05\"]",
+      "kind": "project",
+      "domain": "build",
+      "title": "面试 agent",
+      "body": "{\"id\":\"wx-item-20261114-08\",\"source_ids\":[\"wx-note-20261114-05\"],\"kind\":\"project\",\"domain\":\"build\",\"title\":\"面试 agent\",\"due_at\":null,\"next_action\":\"明确是使用、研究还是开发，以及面向的使用者。\",\"acceptance_criteria\":\"确定一个具体场景与最小交付物。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"1.学习卡神个人agent\\n2.面试agent\\n3.知识库新增：随手记模块\",\"goal\":\"确定一个具体场景与最小交付物。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"明确是使用、研究还是开发，以及面向的使用者。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"original_analysis\":{\"id\":\"wx-item-20261114-08\",\"source_ids\":[\"wx-note-20261114-05\"],\"kind\":\"project\",\"domain\":\"build\",\"title\":\"面试 agent\",\"due_at\":null,\"next_action\":\"明确是使用、研究还是开发，以及面向的使用者。\",\"acceptance_criteria\":\"确定一个具体场景与最小交付物。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"1.学习卡神个人agent\\n2.面试agent\\n3.知识库新增：随手记模块\",\"goal\":\"确定一个具体场景与最小交付物。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"明确是使用、研究还是开发，以及面向的使用者。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"}},\"batch_id\":\"wechat-screenshot-20261114-001\",\"authorship\":\"unknown\",\"adoption_status\":\"pending\",\"evidence_status\":\"unverified\",\"reality\":\"unknown\",\"schedule_confirmed\":false,\"principles\":{\"phenomenon\":\"1.学习卡神个人agent\\n2.面试agent\\n3.知识库新增：随手记模块\",\"goal\":\"确定一个具体场景与最小交付物。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"明确是使用、研究还是开发，以及面向的使用者。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"related_ids\":[],\"status\":\"inbox\",\"planned_at\":null}",
+      "status": "inbox",
+      "due_at": null,
+      "revision": 1,
+      "created_at": "2026-11-14T09:57:49.768Z",
+      "updated_at": "2026-11-14T09:57:49.768Z"
+    },
+    {
+      "id": "wx-item-20261114-09",
+      "message_ids": "[\"wx-note-20261114-05\"]",
+      "kind": "task",
+      "domain": "build",
+      "title": "知识库新增随手记模块",
+      "body": "{\"id\":\"wx-item-20261114-09\",\"source_ids\":[\"wx-note-20261114-05\"],\"kind\":\"task\",\"domain\":\"build\",\"title\":\"知识库新增随手记模块\",\"due_at\":null,\"next_action\":\"查看本次发布效果，记录需要调整的交互和同步问题。\",\"acceptance_criteria\":\"本人验收输入、来源追溯、待办与观念处理流程。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"1.学习卡神个人agent\\n2.面试agent\\n3.知识库新增：随手记模块\",\"goal\":\"本人验收输入、来源追溯、待办与观念处理流程。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"查看本次发布效果，记录需要调整的交互和同步问题。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"original_analysis\":{\"id\":\"wx-item-20261114-09\",\"source_ids\":[\"wx-note-20261114-05\"],\"kind\":\"task\",\"domain\":\"build\",\"title\":\"知识库新增随手记模块\",\"due_at\":null,\"next_action\":\"查看本次发布效果，记录需要调整的交互和同步问题。\",\"acceptance_criteria\":\"本人验收输入、来源追溯、待办与观念处理流程。\",\"summary\":\"根据用户提供的微信截图整理，原始日期未知；建议尚未排期。\",\"principles_draft\":{\"phenomenon\":\"1.学习卡神个人agent\\n2.面试agent\\n3.知识库新增：随手记模块\",\"goal\":\"本人验收输入、来源追溯、待办与观念处理流程。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"查看本次发布效果，记录需要调整的交互和同步问题。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"}},\"batch_id\":\"wechat-screenshot-20261114-001\",\"authorship\":\"unknown\",\"adoption_status\":\"pending\",\"evidence_status\":\"unverified\",\"reality\":\"unknown\",\"schedule_confirmed\":false,\"principles\":{\"phenomenon\":\"1.学习卡神个人agent\\n2.面试agent\\n3.知识库新增：随手记模块\",\"goal\":\"本人验收输入、来源追溯、待办与观念处理流程。\",\"facts\":\"截图出现此项记录；尚无完成情况或截止日期依据。\",\"constraints\":\"源记录缺少完整上下文和明确日期。\",\"assumptions\":\"候选下一步是否合适仍待本人判断。\",\"mechanisms\":\"先把记录转成可检查的具体问题或行动，可能降低后续处理成本；当前仅为方法建议。\",\"alternatives\":\"事项可能已处理、已不重要，或需要其他前置条件，须本人核实。\",\"prediction\":\"形成明确下一步后，检查是否更容易启动；保留未改善或不适用的情况。\",\"next_test\":\"查看本次发布效果，记录需要调整的交互和同步问题。\",\"applicability\":\"限这份截图的整理，不代表稳定行为结论。\"},\"related_ids\":[],\"status\":\"inbox\",\"planned_at\":null}",
+      "status": "inbox",
+      "due_at": null,
+      "revision": 1,
+      "created_at": "2026-11-14T09:57:49.768Z",
+      "updated_at": "2026-11-14T09:57:49.768Z"
+    }
+  ],
+  "capture_versions": []
+}

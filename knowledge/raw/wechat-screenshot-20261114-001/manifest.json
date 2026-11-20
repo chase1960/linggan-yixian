@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "batch_id": "wechat-screenshot-20261114-001",
+  "producer": "user-screenshot",
+  "captured_at": "2026-11-14T09:57:42.276248+00:00",
+  "status": "success",
+  "files": [
+    {
+      "path": "messages.jsonl",
+      "sha256": "3d75bfd6efb92d9334f60187587db23d28863b17411215c4d8ce7d9b6a063013",
+      "bytes": 1436
+    },
+    {
+      "path": "analysis.jsonl",
+      "sha256": "acc20adf454c69f1579c12c0b9e376f129f1ff4380eca7f732637bcc73b66354",
+      "bytes": 12359
+    },
+    {
+      "path": "attachments/source.png",
+      "sha256": "ee9b632e6e45b0e057557d1e99fad8a2d92957ff6a9dc332dfab176c6b13ea4f",
+      "bytes": 180256
+    }
+  ],
+  "source_scope": "本会话用户提供的一张微信截图；不是自动读取微信历史",
+  "missing": [
+    "原始日期和更多上下文未知"
+  ]
+}

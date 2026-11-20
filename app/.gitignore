@@ -1,0 +1,10 @@
+node_modules/
+.preview-data/
+.sites-runtime/
+.env
+.env.*
+!.env.example
+
+.test-output/
+__pycache__/
+*.pyc

@@ -1,0 +1,30 @@
+{
+  "product_version": "digital-self-v4",
+  "date": "2026-11-14",
+  "checks_passed": 43,
+  "zip_integrity": "passed",
+  "sqlite_restore": "passed",
+  "browser_cycle": "capture-split-edit-reload passed",
+  "production_ingestion": {
+    "status": "verified",
+    "legacy_records": 53,
+    "legacy_unchanged": true,
+    "capture_items": 9,
+    "messages": 5,
+    "attachment_roundtrip": "matched",
+    "duplicate_import": "no_duplicate",
+    "scoped_uploader": "verified",
+    "portable_export": "verified",
+    "test_credential": "revoked"
+  },
+  "limits": [
+    "legacy workspace remains R2 JSON",
+    "LLM not connected",
+    "calendar export requires user import",
+    "WorkBuddy local setup required",
+    "ChatGPT reader requires plugin connection",
+    "independent account migration not done"
+  ],
+  "python_uploader_checks": "receipt, duplicate-run, changed-source passed",
+  "mcp": "published; site plugin already installed; tools not yet exposed in current chat"
+}
