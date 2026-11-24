@@ -1,8 +1,9 @@
 import {createCaptureUI} from './capture-ui.js?v=4';
 import {createLabUI} from './lab-ui.js?v=4';
 import {DOMAINS,TYPE_NAMES,ensureLab,makeDemoLab,escapeHTML as e,safeURL,clone,domainName,deriveMetrics,retrieve,addRecord,runReview,activateAction,recordFeedback,reviewRecord,methodFeedback,methodComparisons,METHOD_VERDICTS,saveSkill,updateProfile,validateState,makeEmptyWorkspace,makeDemo} from './engine.js?v=4';
+import {workspaceOps} from './ops.js?v=4.1';
 
-let data=null,identity=null,mode='demo',view='overview',domain='all',type='all',query='',selectedId=null,mapMode='tree',latestReport=null,etag=null,sync='loading',syncError='',menuOpen=false,queue=Promise.resolve(),lastFocus=null;
+let data=null,identity=null,mode='demo',view='overview',domain='all',type='all',query='',selectedId=null,mapMode='tree',latestReport=null,etag=null,synced=null,pendingOps=null,sync='loading',syncError='',menuOpen=false,queue=Promise.resolve(),lastFocus=null;
 const app=document.getElementById('app'),modalRoot=document.getElementById('modal-root');
 const navItems=[['overview','◫','工作台'],['capture','＋','随手记'],['tree','♧','我的知识树'],['skills','⌘','技能与方法'],['timeline','◷','成长轨迹'],['models','◎','个人模型'],['world','◇','生活推演'],['reviews','↻','复盘与行动'],['architecture','⛭','系统逻辑'],['sources','▤','资料与文档']];
 const labUI=createLabUI({getState:()=>data,openModal,closeModal,render,persist,toast});
@@ -19,7 +20,7 @@ function sourceLabel(r){return r.origin==='history-index'?'历史检索摘要':r
 function render(){
  if(!data)return;
  const m=deriveMetrics(data);
- app.innerHTML=`<div class="shell ${menuOpen?'menu-open':''}"><aside class="sidebar"><a class="brand" href="#overview" data-action="navigate" data-view="overview"><span class="brand-symbol">✳</span><span><strong>灵感一现</strong><small>YOUR GROWING SELF</small></span></a><div class="space-label">个人数字分身 / V4</div><nav class="nav" aria-label="工作台导航">${navItems.map(([id,icon,name])=>`<button data-action="navigate" data-view="${id}" class="${view===id?'active':''}" ${view===id?'aria-current="page"':''}><span class="nav-icon" aria-hidden="true">${icon}</span>${name}${id==='reviews'&&m.actions?`<b>${m.actions}</b>`:''}</button>`).join('')}</nav><a class="btn" style="margin:16px 0" href="/learning/">经验学习和沉淀 ↗</a><div class="side-bottom"><span class="tiny-dot"></span>${isDemo()?'演示空间 · 示例保存在本机':'个人空间 · 资料仅本人可见'}<p>每个结论有来路，<br>每次实践都留下反馈。</p><a href="/guide/" target="_blank" rel="noopener">飞书文档与维护规则 ↗</a><button class="subtle-btn" data-action="about">关于这个版本</button></div></aside><main class="workspace"><header class="topbar"><button class="mobile-toggle" data-action="menu" aria-label="打开导航">☰</button><div class="breadcrumb">我的认知空间<span>/</span>${navName()}</div><div class="topbar-actions"><form class="search-box" id="global-search" role="search"><span aria-hidden="true">⌕</span><input aria-label="搜索经历、知识或方法" placeholder="搜索经历、知识或方法" value="${e(query)}"><kbd class="shortcut">↵</kbd></form><span class="sync-text ${sync==='error'?'error':''}"><i class="tiny-dot"></i>${sync==='saving'?'正在保存…':sync==='error'?'同步待重试':isDemo()?'示例已保存在本机':'已同步云端'}</span>${identity?.owner?`<button class="account-btn" data-action="account"><span class="avatar">我</span>我的空间</button>`:`<a class="account-btn" href="/signin-with-chatgpt?return_to=%2F" target="_top"><span class="avatar">↗</span>进入我的空间</a>`}</div></header>${isDemo()?`<div class="demo-banner">${pill('交互样例','amber')} 这里是虚构示例，可完整体验记录与复盘。 <a href="/signin-with-chatgpt?return_to=%2F" target="_top">登录后打开真实资料 ↗</a></div>`:''}<div class="content">${syncError?`<div class="save-error-banner"><span>${e(syncError)}</span>${btn('重试保存','retry','mini')}</div>`:''}${view==='capture'?captureUI.page():renderView()}</div><footer class="footer-note"><span>有依据地认识自己，有余地地改变理解。</span><span>灵感一现 · 数字分身 V4</span></footer></main></div>`;
+ app.innerHTML=`<div class="shell ${menuOpen?'menu-open':''}"><aside class="sidebar"><a class="brand" href="#overview" data-action="navigate" data-view="overview"><span class="brand-symbol">✳</span><span><strong>灵感一现</strong><small>YOUR GROWING SELF</small></span></a><div class="space-label">个人数字分身 / V4</div><nav class="nav" aria-label="工作台导航">${navItems.map(([id,icon,name])=>`<button data-action="navigate" data-view="${id}" class="${view===id?'active':''}" ${view===id?'aria-current="page"':''}><span class="nav-icon" aria-hidden="true">${icon}</span>${name}${id==='reviews'&&m.actions?`<b>${m.actions}</b>`:''}</button>`).join('')}</nav><a class="btn" style="margin:16px 0" href="/learning/">经验学习和沉淀 ↗</a><div class="side-bottom"><span class="tiny-dot"></span>${isDemo()?'演示空间 · 示例保存在本机':'个人空间 · 资料仅本人可见'}<p>每个结论有来路，<br>每次实践都留下反馈。</p><a href="/guide/" target="_blank" rel="noopener">飞书文档与维护规则 ↗</a><button class="subtle-btn" data-action="about">关于这个版本</button></div></aside><main class="workspace"><header class="topbar"><button class="mobile-toggle" data-action="menu" aria-label="打开导航">☰</button><div class="breadcrumb">我的认知空间<span>/</span>${navName()}</div><div class="topbar-actions"><form class="search-box" id="global-search" role="search"><span aria-hidden="true">⌕</span><input aria-label="搜索经历、知识或方法" placeholder="搜索经历、知识或方法" value="${e(query)}"><kbd class="shortcut">↵</kbd></form><span class="sync-text ${sync==='error'?'error':''}"><i class="tiny-dot"></i>${sync==='saving'?'正在保存…':sync==='error'?'同步待重试':isDemo()?'示例已保存在本机':'已同步云端'}</span>${identity?.owner?`<button class="account-btn" data-action="account"><span class="avatar">我</span>我的空间</button>`:`<a class="account-btn" href="/signin-with-chatgpt?return_to=%2F" target="_top"><span class="avatar">↗</span>进入我的空间</a>`}</div></header>${isDemo()?`<div class="demo-banner">${pill('交互样例','amber')} 这里是虚构示例，可完整体验记录与复盘。 <a href="/signin-with-chatgpt?return_to=%2F" target="_top">登录后打开真实资料 ↗</a></div>`:''}<div class="content">${syncError?`<div class="save-error-banner"><span>${e(syncError)}</span><span style="display:flex;gap:8px;flex-shrink:0">${btn('重试同步','retry','mini')}${btn('下载本页记录','export','mini')}</span></div>`:''}${view==='capture'?captureUI.page():renderView()}</div><footer class="footer-note"><span>有依据地认识自己，有余地地改变理解。</span><span>灵感一现 · 数字分身 V4</span></footer></main></div>`;
  if(view==='capture')captureUI.bind();
  const search=document.getElementById('global-search');search?.addEventListener('submit',ev=>{ev.preventDefault();query=search.querySelector('input').value.trim();view='tree';domain='all';render();});
 }
@@ -70,10 +71,52 @@ function openModal(title,desc,body,{wide=false}={}){lastFocus=document.activeEle
 function closeModal(){modalRoot.innerHTML='';lastFocus?.focus?.();}
 function captureModal(prefill={}){openModal('留下这一束灵光','不必先整理好。先留下具体经历，关联可以慢慢长出来。',`<form id="capture-form"><label class="field"><span>给这次发现起个名字（选填）</span><input name="title" maxlength="120" placeholder="例如：这次评审让我重新理解了需求" value="${e(prefill.title||'')}"></label><div class="form-row"><label class="field"><span>放在哪个领域</span><select name="domain">${DOMAINS.map(d=>`<option value="${d.id}" ${d.id===(prefill.domain||'personal')?'selected':''}>${d.name}</option>`).join('')}</select></label><label class="field"><span>这是一条</span><select name="type"><option value="experience">具体经历</option><option value="insight">新的理解</option><option value="question">待探索的问题</option><option value="decision">一次选择</option><option value="knowledge">知识与方法</option></select></label></div><label class="field"><span>记录性质</span><select name="reality"><option value="unknown">未确认 / 待补充情境</option><option value="actual">真实发生 · 本人自述</option><option value="simulation">模拟 / 假设场景</option></select></label><label class="field"><span>当时发生了什么？你怎么想、怎么做？</span><textarea name="text" maxlength="20000" required placeholder="可以直接写一段话。事实、感受和推测都可以留下，后续再区分。">${e(prefill.text||'')}</textarea></label><p class="privacy-note">${isDemo()?'演示中的输入保存在当前浏览器。登录后可记录到个人云端空间。':'仅保存到你的个人空间，不出现在公开样例或公开代码中。'}</p><div class="form-error" role="alert"></div><div class="form-footer">${btn('先不记录','close-modal')}<button class="btn primary" type="submit">保存并寻找关联 ↗</button></div></form>`);document.getElementById('capture-form').addEventListener('submit',async ev=>{ev.preventDefault();const form=ev.currentTarget,f=new FormData(form);try{const r=addRecord(data,{title:f.get('title'),text:f.get('text'),domain:f.get('domain'),type:f.get('type'),reality:f.get('reality')});selectedId=r.id;view='tree';query='';domain='all';closeModal();render();await persist();toast('已留下这次经历，并连接相关记录。');}catch(err){showFormError(form,err);}});}
 function showFormError(form,err){const el=form?.querySelector('.form-error');if(el)el.textContent=err.message||'保存失败，请重试。';else toast(err.message||'操作失败。');}
+async function postOps(ops){
+ const r=await fetch('/api/workspace/apply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({baseRevision:data.revision,ops})});
+ if(r.status===404)return 'missing';
+ const result=await r.json().catch(()=>({}));
+ if(!r.ok)throw Error(result.message||'云端保存失败。');
+ return result;
+}
 async function persist(){
- sync='saving';syncError='';data.updatedAt=new Date().toISOString();const snapshot=clone(data);render();
- const work=async()=>{try{if(isDemo()){localStorage.setItem('inspiration-demo-v2',JSON.stringify(snapshot));sync='saved';render();return;}const r=await fetch('/api/workspace',{method:'PUT',headers:{'Content-Type':'application/json','If-Match':etag||''},body:JSON.stringify(snapshot)});const result=await r.json();if(!r.ok)throw Error(result.message||'云端保存失败。');etag=r.headers.get('ETag');data.revision=result.revision;sync='saved';syncError='';render();}catch(err){sync='error';syncError=err.message;render();throw err;}};
+ sync='saving';syncError='';data.updatedAt=new Date().toISOString();render();
+ const work=async()=>{
+  let ops=[];
+  try{
+   if(isDemo()){localStorage.setItem('inspiration-demo-v2',JSON.stringify(data));synced=clone(data);sync='saved';render();return;}
+   ops=pendingOps||workspaceOps(synced||data,data);
+   if(!ops.length){synced=clone(data);sync='saved';syncError='';render();return;}
+   let result=await postOps(ops);
+   if(result==='missing'){
+    const r=await fetch('/api/workspace',{method:'PUT',headers:{'Content-Type':'application/json','If-Match':'new'},body:JSON.stringify(data)});
+    const first=await r.json().catch(()=>({}));
+    if(!r.ok)throw Error(first.message||'首次保存失败。');
+    result={revision:first.revision};
+   }
+   data.revision=result.revision;synced=clone(data);pendingOps=null;
+   try{localStorage.removeItem('inspiration-pending-v1');}catch{}
+   sync='saved';syncError='';render();
+  }catch(err){
+   pendingOps=ops;
+   try{localStorage.setItem('inspiration-pending-v1',JSON.stringify({ops,at:new Date().toISOString(),revision:data.revision}));}catch{}
+   sync='error';syncError=err.message;render();throw err;
+  }
+ };
  const pending=queue.then(work);queue=pending.catch(()=>{});return pending;
+}
+async function retrySave(){
+ sync='saving';syncError='';render();
+ try{
+  let ops=pendingOps;
+  if(!ops){ops=workspaceOps(synced||data,data);if(!ops.length){sync='saved';render();toast('当前资料已保存。');return;}pendingOps=ops;}
+  let result=await postOps(ops);
+  if(result==='missing'){pendingOps=ops;await persist();return;}
+  data.revision=result.revision;synced=clone(data);pendingOps=null;
+  try{localStorage.removeItem('inspiration-pending-v1');}catch{}
+  sync='saved';syncError='';render();toast('本页修改已合并到云端。');
+ }catch(err){
+  sync='error';syncError=err.message;render();toast(err.message||'暂时无法同步，本页内容仍在。');
+ }
 }
 async function doReview(id){
  const r=data.records.find(x=>x.id===id)||data.records[0];if(!r){toast('先记录一条经历。');return;}
@@ -114,7 +157,7 @@ document.addEventListener('click',async ev=>{const target=ev.target.closest('[da
  else if(act==='confirm-record'){reviewRecord(data,id,'confirmed');closeModal();render();await persist();toast('已记录你的确认；来源与旧版本仍保留。');}
  else if(act==='reject-record'){reviewRecord(data,id,'rejected');selectedId=null;closeModal();render();await persist();toast('已停用这条解释，后续复盘将不再引用它。');}
  else if(act==='correct-record'){const r=data.records.find(x=>x.id===id);openModal('用更准确的理解更新它','保留旧版本，并把你的纠正用于下一次调用。',`<form id="correction-form"><label class="field"><span>更准确的表述</span><textarea name="correction" required maxlength="5000">${e(r.summary)}</textarea></label><div class="form-error" role="alert"></div><div class="form-footer">${btn('取消','close-modal')}<button class="btn primary" type="submit">保存纠正</button></div></form>`);document.getElementById('correction-form').addEventListener('submit',async ev=>{ev.preventDefault();const form=ev.currentTarget;try{reviewRecord(data,id,'corrected',new FormData(form).get('correction'));closeModal();render();await persist();toast('纠正已保存，旧理解仍可在版本记录中查看。');}catch(err){showFormError(form,err);}});}
- else if(act==='retry'){await persist();toast('当前资料已保存。');}
+ else if(act==='retry'){await retrySave();}
  else if(act==='edit-profile')profileEditor();
  else if(act==='edit-skill')skillEditor(id);
  else if(act==='evolve-method'){const row=methodFeedback(data).find(x=>x.feedback.id===id);if(!row?.canRevise){toast('方法已更新或反馈不适用，请刷新核对。');return;}skillEditor(row.skill.id,row);}
@@ -123,7 +166,7 @@ document.addEventListener('click',async ev=>{const target=ev.target.closest('[da
  }catch(err){toast(err.message||'操作暂未完成。');}
 });
 document.addEventListener('keydown',ev=>{if(ev.key==='Escape'){closeModal();if(menuOpen){menuOpen=false;render();}}if((ev.key==='Enter'||ev.key===' ')&&ev.target.matches('g[data-action]')){ev.preventDefault();ev.target.dispatchEvent(new MouseEvent('click',{bubbles:true}));}if(ev.key==='Tab'&&modalRoot.firstChild){const nodes=[...modalRoot.querySelectorAll('a[href],button,input,textarea,select')].filter(el=>!el.disabled),first=nodes[0],last=nodes.at(-1);if(ev.shiftKey&&document.activeElement===first){ev.preventDefault();last.focus();}else if(!ev.shiftKey&&document.activeElement===last){ev.preventDefault();first.focus();}}});
-async function init(){try{const r=await fetch('/api/identity');if(!r.ok)throw Error('无法确认当前空间。');identity=await r.json();if(identity.owner){mode='personal';const w=await fetch('/api/workspace');if(w.status===404){data=makeEmptyWorkspace();etag='new';}else{if(!w.ok){const err=await w.json();throw Error(err.message||'个人资料暂时无法读取。');}etag=w.headers.get('ETag');data=validateState(await w.json());}}else{mode='demo';try{const saved=JSON.parse(localStorage.getItem('inspiration-demo-v2')||'null');data=saved?validateState(saved):makeDemo();}catch{data=makeDemo();}}ensureLab(data);if(mode==='demo'&&!data.lab.demoInitialized)makeDemoLab(data);if(navItems.some(n=>n[0]===location.hash.slice(1)))view=location.hash.slice(1);sync='saved';selectedId=data.records.find(x=>x.insight)?.id||data.records[0]?.id;render();}catch(err){app.innerHTML=`<main class="boot"><span class="brand-symbol">✳</span><h2>你的资料仍然保留着</h2><p>${e(err.message)}</p><p>请稍后刷新，或确认已使用创建此空间的账号登录。</p><div><a class="btn" href="/signin-with-chatgpt?return_to=%2F" target="_top">重新确认账户</a><button class="btn" id="reload-app">重试读取</button></div></main>`;document.getElementById('reload-app').onclick=()=>location.reload();}}
+async function init(){try{const r=await fetch('/api/identity');if(!r.ok)throw Error('无法确认当前空间。');identity=await r.json();if(identity.owner){mode='personal';const w=await fetch('/api/workspace');if(w.status===404){data=makeEmptyWorkspace();etag='new';}else{if(!w.ok){const err=await w.json();throw Error(err.message||'个人资料暂时无法读取。');}etag=w.headers.get('ETag');data=validateState(await w.json());synced=clone(data);}}else{mode='demo';try{const saved=JSON.parse(localStorage.getItem('inspiration-demo-v2')||'null');data=saved?validateState(saved):makeDemo();}catch{data=makeDemo();}}ensureLab(data);if(mode==='demo'&&!data.lab.demoInitialized)makeDemoLab(data);try{const saved=JSON.parse(localStorage.getItem('inspiration-pending-v1')||'null');if(mode==='personal'&&saved&&Array.isArray(saved.ops)&&saved.ops.length){pendingOps=saved.ops;syncError='上次有 '+saved.ops.length+' 项修改还没同步到云端，本页已保留。';}}catch{}if(navItems.some(n=>n[0]===location.hash.slice(1)))view=location.hash.slice(1);if(!syncError)sync='saved';selectedId=data.records.find(x=>x.insight)?.id||data.records[0]?.id;render();if(pendingOps)void retrySave();}catch(err){app.innerHTML=`<main class="boot"><span class="brand-symbol">✳</span><h2>你的资料仍然保留着</h2><p>${e(err.message)}</p><p>请稍后刷新，或确认已使用创建此空间的账号登录。</p><div><a class="btn" href="/signin-with-chatgpt?return_to=%2F" target="_top">重新确认账户</a><button class="btn" id="reload-app">重试读取</button></div></main>`;document.getElementById('reload-app').onclick=()=>location.reload();}}
 window.addEventListener('hashchange',()=>{const next=location.hash.slice(1);if(navItems.some(n=>n[0]===next)){view=next;closeModal();render();}});
 init();
 function skillEditor(id,evidence){

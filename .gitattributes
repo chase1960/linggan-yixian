@@ -1,0 +1,8 @@
+# 让 GitHub 的语言统计反映真实代码占比。
+# knowledge/、legacy-vault/、original-vault/ 是资料快照与历史归档（多为内联数据的 HTML），不是应用代码。
+knowledge/** linguist-documentation
+legacy-vault/** linguist-documentation
+original-vault/** linguist-documentation
+docs/** linguist-documentation
+# 构建产物不参与语言统计，也不参与代码审阅。
+app/dist/** linguist-generated

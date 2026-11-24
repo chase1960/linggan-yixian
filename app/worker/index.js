@@ -1,5 +1,6 @@
 import {captureRoutes} from './capture.js';
 import {validateState,escapeHTML} from '../public/engine.js';
+import {applyWorkspaceOps} from '../public/ops.js';
 // ASSETS is injected by scripts/build.mjs. No private material enters this bundle.
 
 const STATE_KEY='owner/digital-self-v2/workspace.json';
@@ -39,7 +40,7 @@ function handleFailure(error){
 async function handleRequest(request,env,ctx,url,path){
  try{
   // 健康检查只返回布尔能力，不暴露任何凭证或资料内容。
-  if(path==='/api/health'&&['GET','HEAD'].includes(request.method))return json({ok:true,version:'4.1.0',time:new Date().toISOString(),timezone:'Asia/Shanghai',storage:{database:Boolean(env.DB),bucket:Boolean(env.BUCKET)}},200,{'Cache-Control':'no-store'});
+  if(path==='/api/health'&&['GET','HEAD'].includes(request.method))return json({ok:true,version:'4.1.1',time:new Date().toISOString(),timezone:'Asia/Shanghai',storage:{database:Boolean(env.DB),bucket:Boolean(env.BUCKET)}},200,{'Cache-Control':'no-store'});
    const capture=await captureRoutes(request,env,{json,userIdentity,serviceAuthorized,STATE_KEY,LEARNING_KEY,escapeHTML});if(capture)return capture;
    if(path==='/learning')return Response.redirect(url.origin+'/learning/'+url.search,308);
    if(path==='/learning/feed.json'&&request.method==='GET'){
@@ -82,6 +83,26 @@ async function handleRequest(request,env,ctx,url,path){
      const result=await env.BUCKET.put(STATE_KEY,JSON.stringify(state),{onlyIf:{etagDoesNotMatch:'*'},httpMetadata:{contentType:'application/json'}});
      if(!result)return json({message:'资料已被另一个请求初始化。'},409);
      return json({status:'saved',revision:1,records:state.records.length,sources:state.sources.length},201,{'ETag':quoteEtag(result)});
+    }
+    if(path==='/api/workspace/apply'){
+     if(request.method!=='POST')return json({message:'此接口仅支持提交修改。'},405);
+     if(Number(request.headers.get('Content-Length')||0)>MAX_BYTES)return json({message:'资料超过本版 2 MB 上限。'},413);
+     const raw=await request.text();if(new TextEncoder().encode(raw).length>MAX_BYTES)return json({message:'资料超过本版 2 MB 上限。'},413);
+     let payload;try{payload=JSON.parse(raw);}catch{return json({message:'修改内容不是有效的 JSON。'},400);}
+     const ops=payload?.ops;
+     if(payload?.baseRevision!=null&&!Number.isInteger(Number(payload.baseRevision)))return json({message:'版本号不正确。'},400);
+     // 操作集合可能被并发写入打断，重试读取最新版本再合并，最多 5 次。
+     for(let attempt=0;attempt<5;attempt++){
+      const existing=await env.BUCKET.get(STATE_KEY);
+      if(!existing)return json({message:'个人空间尚未初始化，请先完成第一次保存。'},409);
+      const old=await existing.json();
+      let state;try{state=applyWorkspaceOps(old,ops);}catch(error){return json({message:error.message||'修改内容不正确。'},400);}
+      state.mode='personal';state.revision=(old.revision||1)+1;state.updatedAt=new Date().toISOString();
+      validateState(state);
+      const saved=await env.BUCKET.put(STATE_KEY,JSON.stringify(state),{onlyIf:{etagMatches:existing.etag},httpMetadata:{contentType:'application/json'}});
+      if(saved)return json({status:'saved',revision:state.revision,ops:Array.isArray(ops)?ops.length:0,attempts:attempt+1},200);
+     }
+     return json({message:'检测到另一处正在写入，本次没有覆盖。你的修改仍保留在本页，可以稍后重试同步。'},409);
     }
     if(path==='/api/workspace'){
      if(request.method==='GET'){

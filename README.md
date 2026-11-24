@@ -12,7 +12,7 @@
 - [经验学习和沉淀](https://self-knowledge-hub-91da9b.fan200428.chatgpt.site/learning/)：文章精读、方法候选、复查周期与个人能力证据。
 - [导航与飞书文档入口](https://self-knowledge-hub-91da9b.fan200428.chatgpt.site/guide/)：七类认知说明、记录规则、四大领域文档入口。
 
-访问说明：以上为 Sites 上的固定公开入口，2026-11-25 实测三个页面均正常返回。未登录只能看到公开演示内容（示例数据为虚构）；个人空间需用所有者账号登录（`/signin-with-chatgpt`）后才可见。线上当前部署为 V4；本仓库中的 V4.1 优化（`/api/health`、复盘包、经验沉淀接口）尚未部署到该站点。
+访问说明：以上为 Sites 上的固定公开入口，2026-11-25 实测三个页面均正常返回。未登录只能看到公开演示内容（示例数据为虚构）；个人空间需用所有者账号登录（`/signin-with-chatgpt`）后才可见。线上当前部署仍是 V4 的旧写入路径；本仓库的 V4.1.1（增量写入、`/api/health`、复盘包、经验沉淀接口）尚未部署到该站点，使用前请先看[写入协议说明](docs/write-protocol.md)。
 
 ## 直接阅读
 
@@ -21,6 +21,7 @@
 - [早期知识库导航](legacy-vault/index.md)、[成长时间线](legacy-vault/timeline.md)。
 - [随手记与 WorkBuddy 模块规划](docs/inspiration-v4-plan.md)。
 - [V4.1 十项优化说明](docs/optimization-v4.1.md)：检索、沉淀闭环、复盘包、分域导出与构建隐私。
+- [增量写入与冲突恢复](docs/write-protocol.md)：线上复盘为何会卡在红底提示，以及现在的合并写入协议。
 - [WorkBuddy 文件协议](app/public/downloads/workbuddy-contract.md)与[上传脚本](app/public/downloads/workbuddy_upload.py)。
 
 ## 目录
