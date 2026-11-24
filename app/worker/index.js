@@ -19,8 +19,27 @@ async function parseBody(request){if(Number(request.headers.get('Content-Length'
 function quoteEtag(obj){return '"'+obj.etag+'"';}
 export default {
  async fetch(request,env,ctx){
-  const url=new URL(request.url),path=url.pathname;
-  try{
+  const url=new URL(request.url),path=url.pathname,started=Date.now(),rid=(request.headers.get('X-Request-Id')||'').slice(0,64)||crypto.randomUUID();
+  let response;
+  try{response=await handleRequest(request,env,ctx,url,path);}
+  catch(error){response=handleFailure(error);}
+  const headers=new Headers(response.headers);
+  headers.set('X-Request-Id',rid);
+  headers.set('Server-Timing','app;dur='+(Date.now()-started));
+  console.log(JSON.stringify({event:'request',request_id:rid,method:request.method,path,status:response.status,duration_ms:Date.now()-started}));
+  return new Response(response.body,{status:response.status,statusText:response.statusText,headers});
+ }
+};
+function handleFailure(error){
+ if(error instanceof SyntaxError)return json({message:'资料格式不是有效的 JSON。'},400);
+ if(/资料|数据|记录|字段|编号|集合/.test(error.message||''))return json({message:error.message},400);
+ console.error('workspace_request_failed',error?.name||'Error');
+ return json({message:'暂时无法完成操作，已保存的资料不会被覆盖。'},500);
+}
+async function handleRequest(request,env,ctx,url,path){
+ try{
+  // 健康检查只返回布尔能力，不暴露任何凭证或资料内容。
+  if(path==='/api/health'&&['GET','HEAD'].includes(request.method))return json({ok:true,version:'4.1.0',time:new Date().toISOString(),timezone:'Asia/Shanghai',storage:{database:Boolean(env.DB),bucket:Boolean(env.BUCKET)}},200,{'Cache-Control':'no-store'});
    const capture=await captureRoutes(request,env,{json,userIdentity,serviceAuthorized,STATE_KEY,LEARNING_KEY,escapeHTML});if(capture)return capture;
    if(path==='/learning')return Response.redirect(url.origin+'/learning/'+url.search,308);
    if(path==='/learning/feed.json'&&request.method==='GET'){
@@ -98,6 +117,5 @@ export default {
    const asset=ASSETS[assetPath];if(!asset)return new Response('页面不存在。',{status:404,headers:SECURITY});
    const bytes=Uint8Array.from(atob(asset.body),c=>c.charCodeAt(0));
    return new Response(request.method==='HEAD'?null:bytes,{headers:{...SECURITY,'Content-Type':asset.type,'Cache-Control':/\.(html|js|css)$/.test(assetPath)?'no-cache':'public, max-age=300'}});
-  }catch(error){if(error instanceof SyntaxError)return json({message:'资料格式不是有效的 JSON。'},400);if(/资料|数据|记录|字段|编号|集合/.test(error.message||''))return json({message:error.message},400);console.error('workspace_request_failed',error?.name||'Error');return json({message:'暂时无法完成操作，已保存的资料不会被覆盖。'},500);}
+  }catch(error){throw error;}
  }
-};

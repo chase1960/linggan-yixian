@@ -1,3 +1,4 @@
+export const CAPTURE_TIMEZONE='Asia/Shanghai';
 export const CAPTURE_KINDS={task:'待办',idea:'观念',question:'问题',project:'目标与项目',learning:'学习线索'};
 export const CAPTURE_STATUSES={inbox:'待整理',ready:'待执行',doing:'进行中',waiting:'等待中',done:'已完成',cancelled:'已取消'};
 export const CAPTURE_AUTHORSHIP={user_original:'本人原创',ai_quote:'AI建议/转述',other_quote:'他人观点',unknown:'作者待确认'};
@@ -25,6 +26,27 @@ export function splitCaptureText(text){return String(text).split(/\n+/).map(x=>x
 export function classifyCapture(text){if(/^(问题|疑问)[:：]|[？?]$/.test(text))return 'question';if(/^(观念|观点|原则)[:：]/.test(text))return 'idea';if(/^(目标|规划|项目)[:：]|方向.*思考/.test(text))return 'project';if(/^(学习|研究|阅读)/.test(text))return 'learning';if(/^(待办|todo)[:：]|投递|修改|提交|新增|完成|^(整理|安排|联系|检查|确认|准备)/.test(text))return 'task';return 'idea';}
 export function validateCaptureEdit(input,current){
  const next={...current,...input};check(Object.keys(CAPTURE_STATUSES).includes(next.status),'任务状态不正确。');check(Object.keys(CAPTURE_KINDS).includes(next.kind),'记录类型不正确。');check(typeof next.title==='string'&&next.title.trim()&&next.title.length<=160,'请填写有效标题。');check(['pending','adopted','rejected'].includes(next.adoption_status),'观念确认状态不正确。');check(['unknown','actual','simulation'].includes(next.reality),'记录性质不正确。');check(['personal','business','knowledge','build'].includes(next.domain),'领域不正确。');
- for(const k of ['due_at','planned_at'])check(next[k]==null||typeof next[k]==='string'&&/T/.test(next[k])&&Number.isFinite(Date.parse(next[k])),'日期需包含时间和时区。');check(!next.principles||typeof next.principles==='object'&&!Array.isArray(next.principles)&&Object.entries(next.principles).every(([k,v])=>PRINCIPLE_FIELDS.some(f=>f[0]===k)&&typeof v==='string'&&v.length<=6000),'分析字段不正确。');check(!next.related_ids||Array.isArray(next.related_ids)&&next.related_ids.length<=20&&next.related_ids.every(x=>typeof x==='string'&&x.length<=150),'关联字段不正确。');return next;
+ for(const k of ['due_at','planned_at'])check(next[k]==null||typeof next[k]==='string'&&/T/.test(next[k])&&Number.isFinite(Date.parse(next[k])),'日期需包含时间和时区。');
+ check(!next.principles||typeof next.principles==='object'&&!Array.isArray(next.principles)&&Object.entries(next.principles).every(([k,v])=>PRINCIPLE_FIELDS.some(f=>f[0]===k)&&typeof v==='string'&&v.length<=6000),'分析字段不正确。');
+ if(next.outcome!=null)check(typeof next.outcome==='string'&&next.outcome.length<=6000,'行动结果过长。');
+ // 关联只能指向仍然存在的记录；重复项在保存前合并，避免同一来源被重复计入。
+ if(next.related_ids!=null){check(Array.isArray(next.related_ids),'关联字段不正确。');next.related_ids=[...new Set(next.related_ids.filter(x=>typeof x==='string'&&x.trim()).map(x=>x.trim().slice(0,150)))];check(next.related_ids.length<=20,'关联记录最多 20 条。');}
+ // 数据质量：完成状态必须留下实际结果，否则“已完成”只是一句自我宣告。
+ const outcomeText=typeof next.outcome==='string'?next.outcome.trim():'';
+ if(next.status==='done')check(outcomeText.length>=4,'标记完成前请写下实际结果（至少 4 个字）。');
+ // 记录性质从“未确认/模拟”升级为“真实发生”时，必须同时补上可回看的观察结果。
+ if(next.reality==='actual'&&current.reality!=='actual')check(outcomeText.length>=8,'改记为真实发生前，请写下实际发生了什么（至少 8 个字）。');
+ return next;
 }
-export function captureICS(items){const esc=v=>String(v||'').replaceAll('\\','\\\\').replaceAll('\n','\\n').replaceAll(',','\\,').replaceAll(';','\\;');const stamp=d=>new Date(d).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z/,'Z');const rows=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//LingGanYiXian//Capture V4//ZH','CALSCALE:GREGORIAN'];for(const item of items.filter(x=>x.kind==='task'&&x.due_at&&x.schedule_confirmed&&!['done','cancelled'].includes(x.status))){rows.push('BEGIN:VEVENT','UID:'+esc(item.id)+'@linggan','DTSTAMP:'+stamp(item.updated_at),'DTSTART:'+stamp(item.due_at),'SUMMARY:'+esc(item.title),'DESCRIPTION:'+esc(item.next_action||'请回知识库记录结果。'),'END:VEVENT');}rows.push('END:VCALENDAR');return rows.join('\r\n')+'\r\n';}
+export function captureICS(items,{alarmMinutes=30,calendarName='灵感一现 · 提醒'}={}){
+ const esc=v=>String(v||'').replaceAll('\\','\\\\').replaceAll('\n','\\n').replaceAll(',','\\,').replaceAll(';','\\;');
+ const stamp=d=>new Date(d).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z/,'Z');
+ const minutes=Number.isFinite(Number(alarmMinutes))?Math.min(1440,Math.max(0,Number(alarmMinutes))):30;
+ const rows=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//LingGanYiXian//Capture V4.1//ZH','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:'+esc(calendarName),'X-WR-TIMEZONE:Asia/Shanghai'];
+ for(const item of items.filter(x=>x.kind==='task'&&x.due_at&&x.schedule_confirmed&&!['done','cancelled'].includes(x.status))){
+  const start=new Date(item.due_at),end=new Date(start.valueOf()+30*60000);
+  rows.push('BEGIN:VEVENT','UID:'+esc(item.id)+'@linggan','DTSTAMP:'+stamp(item.updated_at||new Date().toISOString()),'DTSTART:'+stamp(start),'DTEND:'+stamp(end),'SUMMARY:'+esc(item.title),'DESCRIPTION:'+esc((item.next_action||'请回知识库记录结果。')+(item.acceptance_criteria?'\n完成标准：'+item.acceptance_criteria:'')),'CATEGORIES:'+esc('灵感一现'),'X-LINGGAN-ITEM:'+esc(item.id),'END:VEVENT');
+  if(minutes>0)rows.splice(rows.length-1,0,'BEGIN:VALARM','TRIGGER:-PT'+minutes+'M','ACTION:DISPLAY','DESCRIPTION:'+esc('待办提醒：'+item.title),'END:VALARM');
+ }
+ rows.push('END:VCALENDAR');return rows.join('\r\n')+'\r\n';
+}

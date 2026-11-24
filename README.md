@@ -10,6 +10,7 @@
 - [知识库离线页面](knowledge/index.html)：下载仓库后用浏览器打开，无需登录。
 - [早期知识库导航](legacy-vault/index.md)、[成长时间线](legacy-vault/timeline.md)。
 - [随手记与 WorkBuddy 模块规划](docs/inspiration-v4-plan.md)。
+- [V4.1 十项优化说明](docs/optimization-v4.1.md)：检索、沉淀闭环、复盘包、分域导出与构建隐私。
 - [WorkBuddy 文件协议](app/public/downloads/workbuddy-contract.md)与[上传脚本](app/public/downloads/workbuddy_upload.py)。
 
 ## 目录
