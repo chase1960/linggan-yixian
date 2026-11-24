@@ -41,15 +41,14 @@ async function capState(env,key){
  return {state,etag:stored.etag};
 }
 // 关联可以指向随手记，也可以指向知识树里的记录；已存在的历史关联允许保留，新增的未知编号直接拒绝。
-async function capAssertRelated(env,ids,current,stateKey){
+async function capAssertRelated(env,ids,current,workspace){
  const keep=new Set((current||[]).filter(x=>typeof x==='string'));
  const list=[...new Set((ids||[]).filter(x=>typeof x==='string'))];
  if(!list.length)return;
  const found=await capSelectIn(env,'capture_items','id',list);
  let missing=list.filter(id=>!found.has(id)&&!keep.has(id));
- if(missing.length&&stateKey){
-  const {state}=await capState(env,stateKey),recordIds=new Set((state?.records||[]).map(r=>r?.id));
-  missing=missing.filter(id=>!recordIds.has(id));
+ if(missing.length&&workspace){
+  try{const {state}=await workspace.load(),recordIds=new Set((state?.records||[]).map(r=>r?.id));missing=missing.filter(id=>!recordIds.has(id));}catch{}
  }
  if(missing.length)throw captureError('关联记录不存在：'+missing.slice(0,3).join('、')+'。请刷新后重新选择。');
 }
@@ -140,14 +139,14 @@ async function capItem(env,id){
  return {item,sources,versions:history.results.map(h=>({...h,body:capSafeParse(h.body,h.body)}))};
 }
 
-async function capUpdate(env,id,input,match,stateKey){
+async function capUpdate(env,id,input,match,workspace){
  if(match==null||match==='')throw captureError('请先读取当前版本，再保存修改。',428);
  const current=(await capItem(env,id)).item;
  if(String(current.revision)!==String(match))throw captureError('记录已被其他页面修改，请重新打开后合并。',409);
  const allowed=['title','kind','domain','status','due_at','planned_at','schedule_confirmed','next_action','acceptance_criteria','adoption_status','reality','principles','related_ids','outcome'];
  if(Object.keys(input||{}).some(k=>!allowed.includes(k)))throw captureError('修改中包含不能改写的来源字段。');
  const next=validateCaptureEdit(input,current);
- await capAssertRelated(env,next.related_ids,current.related_ids,stateKey);
+ await capAssertRelated(env,next.related_ids,current.related_ids,workspace);
  const now=new Date().toISOString();next.updated_at=now;next.revision=current.revision+1;
  if(next.kind!=='task')next.schedule_confirmed=false;
  next.schedule_confirmed=Boolean(next.schedule_confirmed&&next.due_at);
@@ -182,18 +181,17 @@ async function promoteCapture(env,id,input,match,helpers){
  if(current.status!=='done')throw captureError('请先把这条任务标记为已完成。');
  const outcome=String(input?.outcome??current.outcome??'').trim();
  if(outcome.length<4)throw captureError('请先写下实际结果（至少 4 个字），再沉淀为经验。');
- const {state,etag}=await capState(env,helpers.STATE_KEY);
+ const workspace=helpers.workspace;
+ let state;try{state=(await workspace.load()).state;}catch{state=null;}
  if(!state||!Array.isArray(state.records))throw captureError('个人空间尚未初始化，暂时无法沉淀到知识树。',409);
  const now=new Date().toISOString(),recordId='memory-capture-'+id;
  let created=false;
  if(!state.records.some(r=>r?.id===recordId)){
   const record={id:recordId,title:(String(input?.title||current.title).trim()||current.title).slice(0,120),summary:outcome.slice(0,280),original:'随手记任务：'+current.title+'\n下一步：'+(current.next_action||'未填写')+'\n实际结果：'+outcome+'\n完成标准：'+(current.acceptance_criteria||'未填写'),type:'experience',domain:current.domain,tags:[],date:now.slice(0,10),createdAt:now,origin:'capture-sediment',reality:'actual',provenance:'user_report',confidence:'medium',review:'pending',status:'active',related:(current.related_ids||[]).slice(0,5),sourceRefs:[{kind:'capture_item',id,label:'随手记：'+current.title,date:now}],questions:['还有哪些因素可能影响了这次结果？'],note:'来自随手记的实际结果，属于本人自述，尚未独立核验。'};
-  state.records.unshift(record);created=true;
-  state.events=Array.isArray(state.events)?state.events:[];
-  state.events.unshift({id:capID(),date:now,type:'capture-sediment',title:'把一条已完成任务沉淀为经验',recordId});
-  state.revision=(Number(state.revision)||1)+1;state.updatedAt=now;
-  const saved=await env.BUCKET.put(helpers.STATE_KEY,JSON.stringify(state),{onlyIf:{etagMatches:etag},httpMetadata:{contentType:'application/json'}});
-  if(!saved)throw captureError('知识树刚被另一处更新，请刷新后重试沉淀。',409);
+  const event={id:capID(),date:now,type:'capture-sediment',title:'把一条已完成任务沉淀为经验',recordId};
+  try{await workspace.apply([{collection:'records',item:record},{collection:'events',item:event}]);}
+  catch(error){throw captureError('知识树刚被另一处更新，请刷新后重试沉淀。',409);}
+  created=true;
  }
  const next={...current,promoted_record_id:recordId,promoted_at:now,revision:current.revision+1,updated_at:now};
  const written=await env.DB.prepare('UPDATE capture_items SET body=?,revision=revision+1,updated_at=? WHERE id=? AND revision=?').bind(capStoreBody(next),now,id,current.revision).run();
@@ -305,7 +303,7 @@ export async function captureRoutes(req,env,helpers){
   if(path.startsWith('/api/capture/items/')){
    const id=decodeURIComponent(path.slice('/api/capture/items/'.length));
    if(req.method==='GET')return json(await capItem(env,id));
-   if(req.method==='PATCH')return json(await capUpdate(env,id,await capJSON(req,100000),req.headers.get('If-Match'),helpers.STATE_KEY));
+   if(req.method==='PATCH')return json(await capUpdate(env,id,await capJSON(req,100000),req.headers.get('If-Match'),helpers.workspace));
   }
   if(path==='/api/capture/credentials'&&req.method==='POST'){
    const count=await env.DB.prepare('SELECT COUNT(*) AS n FROM capture_credentials WHERE revoked_at IS NULL').first();
@@ -368,7 +366,7 @@ async function portableCapture(env,helpers,url){
   add('data/capture-tables.json',JSON.stringify(tables,null,2));
  }
  let legacy=null,learn=null;
- if(wantWorkspace){const old=await env.BUCKET.get(helpers.STATE_KEY);legacy=old?await old.json():null;add('data/workspace.json',JSON.stringify(legacy,null,2));}
+ if(wantWorkspace){try{legacy=(await helpers.workspace.load()).state;}catch{legacy=null;}add('data/workspace.json',JSON.stringify(legacy,null,2));}
  if(wantLearning){
   const stored=await env.BUCKET.get(helpers.LEARNING_KEY);
   learn=stored?await stored.json():capSafeParse(new TextDecoder().decode(Uint8Array.from(atob(ASSETS['/learning/records.json'].body),c=>c.charCodeAt(0))),{});

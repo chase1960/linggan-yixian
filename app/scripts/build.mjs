@@ -20,12 +20,15 @@ for(const [route,asset] of Object.entries(assets)){
  for(const term of privateTerms)if(text.includes(term))throw Error('发现私人正文进入公开资产：'+route);
  for(const pattern of PII){const hit=text.match(pattern);if(hit)throw Error('公开资产疑似包含联系方式：'+route+'（'+hit[0].slice(0,3)+'…）；请改用示例地址或移除。');}
 }
+const stripImports=code=>code.replace(/^import .*?;$/gm,'');
+const stripModule=code=>code.replaceAll('export ','').replace(/^import .*?;$/gm,'');
 const engine=(await fs.readFile('public/engine.js','utf8')).replaceAll('export ','');
 const opsEngine=(await fs.readFile('public/ops.js','utf8')).replaceAll('export ','');
-const worker=(await fs.readFile('worker/index.js','utf8')).replace("import {validateState,escapeHTML} from '../public/engine.js';",'').replace("import {applyWorkspaceOps} from '../public/ops.js';",'');
+const platform=stripModule(await fs.readFile('worker/platform.js','utf8'));
+const worker=stripImports(await fs.readFile('worker/index.js','utf8'));
 const captureEngine=(await fs.readFile('public/capture-engine.js','utf8')).replaceAll('export ','');
-const captureWorker=(await fs.readFile('worker/capture.js','utf8')).replace(/^import .*?;$/gm,'').replaceAll('export ','');
-const bundle='const ASSETS='+JSON.stringify(assets)+';\n'+engine+'\n'+opsEngine+'\n'+captureEngine+'\n'+captureWorker+'\n'+worker.replace("import {captureRoutes} from './capture.js';",'');
+const captureWorker=stripModule(await fs.readFile('worker/capture.js','utf8'));
+const bundle='const ASSETS='+JSON.stringify(assets)+';\n'+engine+'\n'+opsEngine+'\n'+platform+'\n'+captureEngine+'\n'+captureWorker+'\n'+worker;
 await fs.mkdir('dist/server',{recursive:true});await fs.mkdir('dist/.openai',{recursive:true});
 await fs.writeFile('dist/server/index.js',bundle);await fs.writeFile('dist/.openai/hosting.json',JSON.stringify(config,null,2));
 await fs.cp('drizzle','dist/drizzle',{recursive:true});

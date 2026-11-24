@@ -1,0 +1,22 @@
+name = "linggan-yixian"
+main = "dist/server/index.js"
+compatibility_date = "2026-11-20"
+workers_dev = true
+
+# 逐条实体存储 + 会话 + 提醒
+[[d1_databases]]
+binding = "DB"
+database_name = "linggan-state"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+# 原始附件、备份快照、学习分支
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "linggan-assets"
+
+# 每天 09:00（Asia/Shanghai）：快照 + 复查提醒
+[triggers]
+crons = ["0 1 * * *"]
+
+[observability]
+enabled = true
