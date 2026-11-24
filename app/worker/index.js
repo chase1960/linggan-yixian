@@ -18,6 +18,9 @@ function userIdentity(request,env){
 async function parseBody(request){if(Number(request.headers.get('Content-Length')||0)>MAX_BYTES)throw Error('资料超过本版 2 MB 上限。');const raw=await request.text();if(new TextEncoder().encode(raw).length>MAX_BYTES)throw Error('资料超过本版 2 MB 上限。');return validateState(JSON.parse(raw));}
 async function storedText(stored){if(!stored)return null;if(typeof stored.text==='function')return await stored.text();if(typeof stored.json==='function')return JSON.stringify(await stored.json());return null;}
 function quoteRevision(state){return '"rev-'+(state?.revision||0)+'"';}
+// 学习分支的版本号由内容本身计算，避免托管边缘改写响应头 ETag 后无法比对。
+function learningRevision(text){let h=0x811c9dc5;for(let i=0;i<text.length;i++){h^=text.charCodeAt(i);h=Math.imul(h,0x01000193);}return 'lr-'+(h>>>0).toString(16).padStart(8,'0');}
+async function bucketText(obj){if(typeof obj.text==='function')return obj.text();if(typeof obj.json==='function')return JSON.stringify(await obj.json());return typeof obj.body==='string'?obj.body:'';}
 // 新增的写入协议不能删除历史：整份 PUT 时，任何已有编号消失都视为回退，必须拒绝。
 function lostHistory(current,incoming){
  for(const key of ['records','sources','skills','actions','feedback','reviews','events','profiles','documents']){
@@ -83,18 +86,26 @@ async function handleRequest(request,env,ctx,url,path){
    if(!service)return json({message:'学习分支写入需要授权。'},401);
    if(!env.BUCKET)return json({message:'学习存储尚未配置。'},503);
    const key='learning/public-records-v1.json',existing=await env.BUCKET.get(key);
-   if(request.method==='GET')return existing?new Response(existing.body,{headers:{...SECURITY,'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','ETag':'"'+existing.etag+'"'}}):json({message:'尚未初始化。'},404);
+   if(request.method==='GET'){
+    if(!existing)return json({message:'尚未初始化。'},404);
+    const text=await bucketText(existing),tag='"'+learningRevision(text)+'"';
+    return new Response(text,{headers:{...SECURITY,'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','ETag':tag}});
+   }
    if(request.method!=='PUT')return json({message:'仅支持读取或保存。'},405);
-   if(existing&&request.headers.get('If-Match')!=='"'+existing.etag+'"')return json({message:'版本已变化，请重新读取并合并。'},409);
+   if(existing){
+    const current='"'+learningRevision(await bucketText(existing))+'"';
+    const match=request.headers.get('If-Match');
+    if(match!==current&&match!=='"'+existing.etag+'"')return json({message:'版本已变化，请重新读取并合并。'},409);
+   }
    if(!existing&&request.headers.get('If-None-Match')!=='*')return json({message:'初始化需要显式防覆盖条件。'},428);
    const raw=await request.text();if(new TextEncoder().encode(raw).length>MAX_BYTES)return json({message:'资料超过上限。'},413);
    const value=JSON.parse(raw);
    if(value.schemaVersion!==1||!Array.isArray(value.articles)||!Array.isArray(value.methods)||!Array.isArray(value.history)||value.articles.length>1000)return json({message:'学习资料格式不正确。'},400);
    const ids=new Set();for(const a of value.articles){if(typeof a.id!=='string'||ids.has(a.id)||typeof a.title!=='string'||!Array.isArray(a.summary)||typeof a.url!=='string'||!a.url.startsWith('https://'))return json({message:'文章字段不正确或编号重复。'},400);ids.add(a.id);}
-   if(existing){const old=await existing.json();if(old.articles.some(a=>!ids.has(a.id)))return json({message:'请保留已有文章，使用版本记录标记被替代内容。'},409);}
-   const saved=await env.BUCKET.put(key,JSON.stringify(value),{onlyIf:existing?{etagMatches:existing.etag}:{etagDoesNotMatch:'*'},httpMetadata:{contentType:'application/json'}});
+   if(existing){const old=JSON.parse(await bucketText(existing));if(old.articles.some(a=>!ids.has(a.id)))return json({message:'请保留已有文章，使用版本记录标记被替代内容。'},409);}
+   const saved=await env.BUCKET.put(key,raw,{onlyIf:existing?{etagMatches:existing.etag}:{etagDoesNotMatch:'*'},httpMetadata:{contentType:'application/json'}});
    if(!saved)return json({message:'并发更新，本次没有覆盖。'},409);
-   return json({status:'saved',articles:value.articles.length,methods:value.methods.length},200,{'ETag':'"'+saved.etag+'"'});
+   return json({status:'saved',articles:value.articles.length,methods:value.methods.length},200,{'ETag':'"'+learningRevision(raw)+'"'});
   }
   if(path==='/api/identity'){
    if(request.method!=='GET')return json({message:'此接口仅支持读取。'},405);
