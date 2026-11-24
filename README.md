@@ -4,6 +4,16 @@
 
 本仓库按所有者明确要求作为公开备份，包含个人知识资料。站点代码中的私有接口仍保留身份校验；仓库中的 knowledge/ 是单独导出的可阅读快照。
 
+## 在线入口（随时访问）
+
+线上站点：<https://self-knowledge-hub-91da9b.fan200428.chatgpt.site/>
+
+- [主工作台](https://self-knowledge-hub-91da9b.fan200428.chatgpt.site/)：随手记、收件箱整理、第一性原理分析、知识关联与行动结果。
+- [经验学习和沉淀](https://self-knowledge-hub-91da9b.fan200428.chatgpt.site/learning/)：文章精读、方法候选、复查周期与个人能力证据。
+- [导航与飞书文档入口](https://self-knowledge-hub-91da9b.fan200428.chatgpt.site/guide/)：七类认知说明、记录规则、四大领域文档入口。
+
+访问说明：以上为 Sites 上的固定公开入口，2026-11-25 实测三个页面均正常返回。未登录只能看到公开演示内容（示例数据为虚构）；个人空间需用所有者账号登录（`/signin-with-chatgpt`）后才可见。线上当前部署为 V4；本仓库中的 V4.1 优化（`/api/health`、复盘包、经验沉淀接口）尚未部署到该站点。
+
 ## 直接阅读
 
 - [当前知识正文](knowledge/wiki/)：62 篇 Markdown。
